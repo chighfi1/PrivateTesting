@@ -1,0 +1,102 @@
+<!-- User Address Service Demo with Business Logic -->
+<div class="container">
+  <h1>User Address Information with Business Logic</h1>
+  
+  <div class="address-info" *ngIf="processedAddressInfo$ | async as addressInfo">
+    
+    <!-- Business Summary Section -->
+    <div class="business-summary">
+      <h3>Business Summary for User: {{ addressInfo.userId }}</h3>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="label">Total Addresses:</span>
+          <span class="value">{{ addressInfo.totalAddresses }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Domestic:</span>
+          <span class="value">{{ addressInfo.domesticAddressCount }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">International:</span>
+          <span class="value">{{ addressInfo.internationalAddressCount }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Valid for Shipping:</span>
+          <span class="value" [class.valid]="addressInfo.hasValidShippingAddress" 
+                [class.invalid]="!addressInfo.hasValidShippingAddress">
+            {{ addressInfo.hasValidShippingAddress ? 'Yes' : 'No' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommended Address Section -->
+    <div class="recommended-address" *ngIf="addressInfo.recommendedAddress">
+      <h4>💡 Recommended Address</h4>
+      <div class="address-card recommended">
+        <div class="address-header">
+          <span>{{ addressInfo.recommendedAddress.displayName }}</span>
+          <div class="badges">
+            <span class="type-badge">{{ addressInfo.recommendedAddress.addressType | titlecase }}</span>
+            <span class="distance-badge">{{ addressInfo.recommendedAddress.distanceFromWarehouse }} miles</span>
+          </div>
+        </div>
+        <p>{{ addressInfo.recommendedAddress.formattedAddress }}</p>
+        <div class="address-details">
+          <span class="detail" *ngIf="addressInfo.recommendedAddress.isInternational">International</span>
+          <span class="detail" *ngIf="!addressInfo.recommendedAddress.isInternational">Domestic</span>
+          <span class="detail">Tax: {{ (addressInfo.recommendedAddress.taxRate * 100).toFixed(2) }}%</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Primary Address Section -->
+    <div class="primary-address" *ngIf="addressInfo.primaryAddress">
+      <h4>🏠 Primary Address</h4>
+      <div class="address-card primary">
+        <div class="address-header">
+          <span>{{ addressInfo.primaryAddress.displayName }}</span>
+          <div class="badges">
+            <span class="primary-badge">Primary</span>
+            <span class="type-badge">{{ addressInfo.primaryAddress.addressType | titlecase }}</span>
+            <span class="distance-badge">{{ addressInfo.primaryAddress.distanceFromWarehouse }} miles</span>
+          </div>
+        </div>
+        <p>{{ addressInfo.primaryAddress.formattedAddress }}</p>
+        <div class="address-details">
+          <span class="detail" *ngIf="addressInfo.primaryAddress.isInternational">International</span>
+          <span class="detail" *ngIf="!addressInfo.primaryAddress.isInternational">Domestic</span>
+          <span class="detail">Tax: {{ (addressInfo.primaryAddress.taxRate * 100).toFixed(2) }}%</span>
+          <span class="detail valid" *ngIf="addressInfo.primaryAddress.isValidForShipping">✓ Valid for shipping</span>
+          <span class="detail invalid" *ngIf="!addressInfo.primaryAddress.isValidForShipping">✗ Not valid for shipping</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- All Addresses Section -->
+    <div class="all-addresses">
+      <h4>📍 All Addresses ({{ addressInfo.totalAddresses }})</h4>
+      <div class="address-card" *ngFor="let address of addressInfo.addresses; trackBy: trackByAddressId">
+        <div class="address-header">
+          <span>{{ address.displayName }}</span>
+          <div class="badges">
+            <span class="primary-badge" *ngIf="address.isPrimary">Primary</span>
+            <span class="type-badge">{{ address.addressType | titlecase }}</span>
+            <span class="distance-badge">{{ address.distanceFromWarehouse }} miles</span>
+            <span class="international-badge" *ngIf="address.isInternational">International</span>
+          </div>
+        </div>
+        <p>{{ address.formattedAddress }}</p>
+        <div class="address-details">
+          <span class="detail">Tax: {{ (address.taxRate * 100).toFixed(2) }}%</span>
+          <span class="detail valid" *ngIf="address.isValidForShipping">✓ Valid for shipping</span>
+          <span class="detail invalid" *ngIf="!address.isValidForShipping">✗ Not valid for shipping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="loading" *ngIf="!(processedAddressInfo$ | async)">
+    Loading and processing user address information...
+  </div>
+</div>

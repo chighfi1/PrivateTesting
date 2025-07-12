@@ -1,0 +1,244 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h3 {
+  color: #2c3e50;
+  margin-top: 20px;
+}
+
+h4 {
+  color: #34495e;
+  margin: 20px 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.address-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+// Business Summary Section
+.business-summary {
+  background-color: #e3f2fd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border-left: 4px solid #2196f3;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.summary-item .label {
+  font-weight: 600;
+  color: #555;
+}
+
+.summary-item .value {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.summary-item .value.valid {
+  color: #27ae60;
+}
+
+.summary-item .value.invalid {
+  color: #e74c3c;
+}
+
+// Recommended Address Section
+.recommended-address {
+  margin-bottom: 25px;
+}
+
+.address-card.recommended {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+  border-left: 4px solid #ffc107;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+// Primary Address Section
+.primary-address {
+  margin-bottom: 25px;
+}
+
+.address-card.primary {
+  background-color: #e8f6f3;
+  border-left: 4px solid #27ae60;
+}
+
+// All Addresses Section
+.all-addresses {
+  margin-top: 25px;
+}
+
+.address-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.address-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.address-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.address-header span:first-child {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.1em;
+}
+
+// Badges
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.primary-badge {
+  background-color: #27ae60;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.type-badge {
+  background-color: #3498db;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.distance-badge {
+  background-color: #9b59b6;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.international-badge {
+  background-color: #e67e22;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+// Address Details
+.address-details {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detail {
+  background-color: #f8f9fa;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #555;
+  border: 1px solid #e9ecef;
+}
+
+.detail.valid {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.detail.invalid {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+// Loading State
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+  color: #7f8c8d;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+// Typography
+p {
+  margin: 8px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .address-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .badges {
+    width: 100%;
+  }
+  
+  .address-details {
+    flex-direction: column;
+  }
+}
