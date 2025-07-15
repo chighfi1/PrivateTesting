@@ -54,7 +54,7 @@ export class UserAddressComponent implements OnInit {
       );
   }
 
-  private applyBusinessLogic(rawData: UserAddressInfo): ProcessedUserAddressInfo {
+  applyBusinessLogic(rawData: UserAddressInfo): ProcessedUserAddressInfo {
     const processedAddresses = rawData.addresses.map(address => 
       this.processAddress(address)
     );
@@ -75,7 +75,7 @@ export class UserAddressComponent implements OnInit {
     };
   }
 
-  private processAddress(address: Address): ProcessedAddress {
+  processAddress(address: Address): ProcessedAddress {
     const isInternational = address.country !== this.DOMESTIC_COUNTRY;
     const addressType = this.determineAddressType(address);
     const distanceFromWarehouse = this.calculateDistanceFromWarehouse(address);
@@ -93,7 +93,7 @@ export class UserAddressComponent implements OnInit {
     };
   }
 
-  private determineAddressType(address: Address): 'residential' | 'commercial' | 'po-box' {
+  determineAddressType(address: Address): 'residential' | 'commercial' | 'po-box' {
     const street = address.street.toLowerCase();
     
     // Branch 1: PO Box detection (multiple patterns)
@@ -120,7 +120,7 @@ export class UserAddressComponent implements OnInit {
     return 'residential';
   }
 
-  private calculateDistanceFromWarehouse(address: Address): number {
+  calculateDistanceFromWarehouse(address: Address): number {
     // Simplified distance calculation based on state
     const distances: { [key: string]: number } = {
       'CA': 50,   // Close to LA warehouse
@@ -137,7 +137,7 @@ export class UserAddressComponent implements OnInit {
     return distances[address.state] || 1000; // Default distance
   }
 
-  private calculateTaxRate(address: Address): number {
+  calculateTaxRate(address: Address): number {
     // State tax rates (simplified)
     const taxRates: { [key: string]: number } = {
       'CA': 0.0825, // 8.25%
@@ -154,7 +154,7 @@ export class UserAddressComponent implements OnInit {
     return taxRates[address.state] || 0.05; // Default 5%
   }
 
-  private validateAddressForShipping(address: Address, addressType: 'residential' | 'commercial' | 'po-box'): boolean {
+  validateAddressForShipping(address: Address, addressType: 'residential' | 'commercial' | 'po-box'): boolean {
     // Branch 1: PO Box validation
     if (addressType === 'po-box') {
       return false;
@@ -199,16 +199,16 @@ export class UserAddressComponent implements OnInit {
     return true;
   }
 
-  private createDisplayName(address: Address): string {
+  createDisplayName(address: Address): string {
     const parts = [address.city, address.state];
     return parts.join(', ');
   }
 
-  private formatAddress(address: Address): string {
+  formatAddress(address: Address): string {
     return `${address.street}, ${address.city}, ${address.state} ${address.zipCode}, ${address.country}`;
   }
 
-  private findRecommendedAddress(addresses: ProcessedAddress[]): ProcessedAddress | undefined {
+  findRecommendedAddress(addresses: ProcessedAddress[]): ProcessedAddress | undefined {
     // Branch 1: No addresses provided
     if (!addresses || addresses.length === 0) {
       return undefined;

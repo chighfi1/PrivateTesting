@@ -1,0 +1,5 @@
+2025/07/12-15:41:26.888 f34 Creating DB C:\Users\colts\repository\PrivateTesting\.vscode\edge-debug-profile\Default\EdgeCoupons/coupons_data.db since it was missing.
+2025/07/12-15:41:26.897 f34 Reusing MANIFEST C:\Users\colts\repository\PrivateTesting\.vscode\edge-debug-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2025/07/12-15:41:27.193 258c Level-0 table #5: started
+2025/07/12-15:41:27.197 258c Level-0 table #5: 671920 bytes OK
+2025/07/12-15:41:27.199 258c Delete type=0 #3

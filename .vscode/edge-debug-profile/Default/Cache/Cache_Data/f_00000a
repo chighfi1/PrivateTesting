@@ -1,0 +1,703 @@
+import { injectQuery as __vite__injectQuery } from "/@vite/client";import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/chunk-JSHS6PSK.js");import {
+  __export,
+  __spreadProps,
+  __spreadValues
+} from "/chunk-CZJLB7T5.js";
+
+// src/app/components/user-address.component.ts
+import { Component } from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/@angular_core.js?v=11b7bc67";
+import { CommonModule } from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/@angular_common.js?v=11b7bc67";
+import { map } from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/rxjs.js?v=11b7bc67";
+import * as i02 from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/@angular_core.js?v=11b7bc67";
+
+// src/app/services/user-address.service.ts
+var user_address_service_exports = {};
+__export(user_address_service_exports, {
+  UserAddressService: () => UserAddressService
+});
+import { Injectable } from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/@angular_core.js?v=11b7bc67";
+import { Observable, of, delay } from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/rxjs.js?v=11b7bc67";
+import * as i0 from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/@angular_core.js?v=11b7bc67";
+var UserAddressService = class _UserAddressService {
+  /**
+   * Gets user address information by user ID
+   * @param userId - The ID of the user
+   * @returns Observable containing user address information
+   */
+  getUserAddressInfo(userId) {
+    const mockAddresses = [
+      {
+        id: "1",
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zipCode: "10001",
+        country: "USA",
+        isPrimary: true
+      },
+      {
+        id: "2",
+        street: "456 Oak Ave",
+        city: "Los Angeles",
+        state: "CA",
+        zipCode: "90210",
+        country: "USA",
+        isPrimary: false
+      }
+    ];
+    const userAddressInfo = {
+      userId,
+      addresses: mockAddresses,
+      primaryAddress: mockAddresses.find((address) => address.isPrimary)
+    };
+    return of(userAddressInfo).pipe(
+      delay(500)
+      // Simulate network delay
+    );
+  }
+  /**
+   * Gets all addresses for a user
+   * @param userId - The ID of the user
+   * @returns Observable containing array of addresses
+   */
+  getUserAddresses(userId) {
+    return new Observable((observer) => {
+      this.getUserAddressInfo(userId).subscribe({
+        next: (userAddressInfo) => {
+          observer.next(userAddressInfo.addresses);
+          observer.complete();
+        },
+        error: (error) => observer.error(error)
+      });
+    });
+  }
+  /**
+   * Gets the primary address for a user
+   * @param userId - The ID of the user
+   * @returns Observable containing the primary address or null if not found
+   */
+  getUserPrimaryAddress(userId) {
+    return new Observable((observer) => {
+      this.getUserAddressInfo(userId).subscribe({
+        next: (userAddressInfo) => {
+          observer.next(userAddressInfo.primaryAddress || null);
+          observer.complete();
+        },
+        error: (error) => observer.error(error)
+      });
+    });
+  }
+  static \u0275fac = function UserAddressService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _UserAddressService)();
+  };
+  static \u0275prov = /* @__PURE__ */ i0.\u0275\u0275defineInjectable({ token: _UserAddressService, factory: _UserAddressService.\u0275fac, providedIn: "root" });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i0.\u0275setClassMetadata(UserAddressService, [{
+    type: Injectable,
+    args: [{
+      providedIn: "root"
+    }]
+  }], null, null);
+})();
+
+// src/app/components/user-address.component.ts
+import * as i2 from "/@fs/C:/Users/colts/repository/PrivateTesting/.angular/cache/20.1.0/private-testing-app/vite/deps/@angular_common.js?v=11b7bc67";
+function UserAddressComponent_div_3_div_25_span_16_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 21);
+    i02.\u0275\u0275text(1, "International");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_25_span_17_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 21);
+    i02.\u0275\u0275text(1, "Domestic");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_25_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "div", 13)(1, "h4");
+    i02.\u0275\u0275text(2, "\u{1F4A1} Recommended Address");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(3, "div", 14)(4, "div", 15)(5, "span");
+    i02.\u0275\u0275text(6);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(7, "div", 16)(8, "span", 17);
+    i02.\u0275\u0275text(9);
+    i02.\u0275\u0275pipe(10, "titlecase");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(11, "span", 18);
+    i02.\u0275\u0275text(12);
+    i02.\u0275\u0275elementEnd()()();
+    i02.\u0275\u0275elementStart(13, "p");
+    i02.\u0275\u0275text(14);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(15, "div", 19);
+    i02.\u0275\u0275template(16, UserAddressComponent_div_3_div_25_span_16_Template, 2, 0, "span", 20)(17, UserAddressComponent_div_3_div_25_span_17_Template, 2, 0, "span", 20);
+    i02.\u0275\u0275elementStart(18, "span", 21);
+    i02.\u0275\u0275text(19);
+    i02.\u0275\u0275elementEnd()()()();
+  }
+  if (rf & 2) {
+    const addressInfo_r1 = i02.\u0275\u0275nextContext().ngIf;
+    i02.\u0275\u0275advance(6);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.recommendedAddress.displayName);
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate(i02.\u0275\u0275pipeBind1(10, 7, addressInfo_r1.recommendedAddress.addressType));
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate1("", addressInfo_r1.recommendedAddress.distanceFromWarehouse, " miles");
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.recommendedAddress.formattedAddress);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275property("ngIf", addressInfo_r1.recommendedAddress.isInternational);
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", !addressInfo_r1.recommendedAddress.isInternational);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275textInterpolate1("Tax: ", (addressInfo_r1.recommendedAddress.taxRate * 100).toFixed(2), "%");
+  }
+}
+function UserAddressComponent_div_3_div_26_span_18_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 21);
+    i02.\u0275\u0275text(1, "International");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_26_span_19_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 21);
+    i02.\u0275\u0275text(1, "Domestic");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_26_span_22_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 27);
+    i02.\u0275\u0275text(1, "\u2713 Valid for shipping");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_26_span_23_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 28);
+    i02.\u0275\u0275text(1, "\u2717 Not valid for shipping");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_26_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "div", 22)(1, "h4");
+    i02.\u0275\u0275text(2, "\u{1F3E0} Primary Address");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(3, "div", 23)(4, "div", 15)(5, "span");
+    i02.\u0275\u0275text(6);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(7, "div", 16)(8, "span", 24);
+    i02.\u0275\u0275text(9, "Primary");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(10, "span", 17);
+    i02.\u0275\u0275text(11);
+    i02.\u0275\u0275pipe(12, "titlecase");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(13, "span", 18);
+    i02.\u0275\u0275text(14);
+    i02.\u0275\u0275elementEnd()()();
+    i02.\u0275\u0275elementStart(15, "p");
+    i02.\u0275\u0275text(16);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(17, "div", 19);
+    i02.\u0275\u0275template(18, UserAddressComponent_div_3_div_26_span_18_Template, 2, 0, "span", 20)(19, UserAddressComponent_div_3_div_26_span_19_Template, 2, 0, "span", 20);
+    i02.\u0275\u0275elementStart(20, "span", 21);
+    i02.\u0275\u0275text(21);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275template(22, UserAddressComponent_div_3_div_26_span_22_Template, 2, 0, "span", 25)(23, UserAddressComponent_div_3_div_26_span_23_Template, 2, 0, "span", 26);
+    i02.\u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const addressInfo_r1 = i02.\u0275\u0275nextContext().ngIf;
+    i02.\u0275\u0275advance(6);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.primaryAddress.displayName);
+    i02.\u0275\u0275advance(5);
+    i02.\u0275\u0275textInterpolate(i02.\u0275\u0275pipeBind1(12, 9, addressInfo_r1.primaryAddress.addressType));
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate1("", addressInfo_r1.primaryAddress.distanceFromWarehouse, " miles");
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.primaryAddress.formattedAddress);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275property("ngIf", addressInfo_r1.primaryAddress.isInternational);
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", !addressInfo_r1.primaryAddress.isInternational);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275textInterpolate1("Tax: ", (addressInfo_r1.primaryAddress.taxRate * 100).toFixed(2), "%");
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", addressInfo_r1.primaryAddress.isValidForShipping);
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", !addressInfo_r1.primaryAddress.isValidForShipping);
+  }
+}
+function UserAddressComponent_div_3_div_30_span_5_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 24);
+    i02.\u0275\u0275text(1, "Primary");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_30_span_11_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 32);
+    i02.\u0275\u0275text(1, "International");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_30_span_17_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 27);
+    i02.\u0275\u0275text(1, "\u2713 Valid for shipping");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_30_span_18_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 28);
+    i02.\u0275\u0275text(1, "\u2717 Not valid for shipping");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function UserAddressComponent_div_3_div_30_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "div", 29)(1, "div", 15)(2, "span");
+    i02.\u0275\u0275text(3);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(4, "div", 16);
+    i02.\u0275\u0275template(5, UserAddressComponent_div_3_div_30_span_5_Template, 2, 0, "span", 30);
+    i02.\u0275\u0275elementStart(6, "span", 17);
+    i02.\u0275\u0275text(7);
+    i02.\u0275\u0275pipe(8, "titlecase");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(9, "span", 18);
+    i02.\u0275\u0275text(10);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275template(11, UserAddressComponent_div_3_div_30_span_11_Template, 2, 0, "span", 31);
+    i02.\u0275\u0275elementEnd()();
+    i02.\u0275\u0275elementStart(12, "p");
+    i02.\u0275\u0275text(13);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(14, "div", 19)(15, "span", 21);
+    i02.\u0275\u0275text(16);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275template(17, UserAddressComponent_div_3_div_30_span_17_Template, 2, 0, "span", 25)(18, UserAddressComponent_div_3_div_30_span_18_Template, 2, 0, "span", 26);
+    i02.\u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const address_r2 = ctx.$implicit;
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate(address_r2.displayName);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275property("ngIf", address_r2.isPrimary);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275textInterpolate(i02.\u0275\u0275pipeBind1(8, 9, address_r2.addressType));
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate1("", address_r2.distanceFromWarehouse, " miles");
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", address_r2.isInternational);
+    i02.\u0275\u0275advance(2);
+    i02.\u0275\u0275textInterpolate(address_r2.formattedAddress);
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate1("Tax: ", (address_r2.taxRate * 100).toFixed(2), "%");
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", address_r2.isValidForShipping);
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", !address_r2.isValidForShipping);
+  }
+}
+function UserAddressComponent_div_3_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "div", 3)(1, "div", 4)(2, "h3");
+    i02.\u0275\u0275text(3);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(4, "div", 5)(5, "div", 6)(6, "span", 7);
+    i02.\u0275\u0275text(7, "Total Addresses:");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(8, "span", 8);
+    i02.\u0275\u0275text(9);
+    i02.\u0275\u0275elementEnd()();
+    i02.\u0275\u0275elementStart(10, "div", 6)(11, "span", 7);
+    i02.\u0275\u0275text(12, "Domestic:");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(13, "span", 8);
+    i02.\u0275\u0275text(14);
+    i02.\u0275\u0275elementEnd()();
+    i02.\u0275\u0275elementStart(15, "div", 6)(16, "span", 7);
+    i02.\u0275\u0275text(17, "International:");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(18, "span", 8);
+    i02.\u0275\u0275text(19);
+    i02.\u0275\u0275elementEnd()();
+    i02.\u0275\u0275elementStart(20, "div", 6)(21, "span", 7);
+    i02.\u0275\u0275text(22, "Valid for Shipping:");
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275elementStart(23, "span", 8);
+    i02.\u0275\u0275text(24);
+    i02.\u0275\u0275elementEnd()()()();
+    i02.\u0275\u0275template(25, UserAddressComponent_div_3_div_25_Template, 20, 9, "div", 9)(26, UserAddressComponent_div_3_div_26_Template, 24, 11, "div", 10);
+    i02.\u0275\u0275elementStart(27, "div", 11)(28, "h4");
+    i02.\u0275\u0275text(29);
+    i02.\u0275\u0275elementEnd();
+    i02.\u0275\u0275template(30, UserAddressComponent_div_3_div_30_Template, 19, 11, "div", 12);
+    i02.\u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const addressInfo_r1 = ctx.ngIf;
+    const ctx_r2 = i02.\u0275\u0275nextContext();
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate1("Business Summary for User: ", addressInfo_r1.userId);
+    i02.\u0275\u0275advance(6);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.totalAddresses);
+    i02.\u0275\u0275advance(5);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.domesticAddressCount);
+    i02.\u0275\u0275advance(5);
+    i02.\u0275\u0275textInterpolate(addressInfo_r1.internationalAddressCount);
+    i02.\u0275\u0275advance(4);
+    i02.\u0275\u0275classProp("valid", addressInfo_r1.hasValidShippingAddress)("invalid", !addressInfo_r1.hasValidShippingAddress);
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275textInterpolate1(" ", addressInfo_r1.hasValidShippingAddress ? "Yes" : "No", " ");
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", addressInfo_r1.recommendedAddress);
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngIf", addressInfo_r1.primaryAddress);
+    i02.\u0275\u0275advance(3);
+    i02.\u0275\u0275textInterpolate1("\u{1F4CD} All Addresses (", addressInfo_r1.totalAddresses, ")");
+    i02.\u0275\u0275advance();
+    i02.\u0275\u0275property("ngForOf", addressInfo_r1.addresses)("ngForTrackBy", ctx_r2.trackByAddressId);
+  }
+}
+function UserAddressComponent_div_5_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "div", 33);
+    i02.\u0275\u0275text(1, " Loading and processing user address information... ");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+var UserAddressComponent = class _UserAddressComponent {
+  userAddressService;
+  processedAddressInfo$;
+  // Business logic configuration
+  DOMESTIC_COUNTRY = "USA";
+  WAREHOUSE_LOCATIONS = [
+    { state: "CA", city: "Los Angeles" },
+    { state: "NY", city: "New York" },
+    { state: "TX", city: "Dallas" }
+  ];
+  constructor(userAddressService) {
+    this.userAddressService = userAddressService;
+  }
+  ngOnInit() {
+    this.processedAddressInfo$ = this.userAddressService.getUserAddressInfo("user-123").pipe(map((rawData) => this.applyBusinessLogic(rawData)));
+  }
+  applyBusinessLogic(rawData) {
+    const processedAddresses = rawData.addresses.map((address) => this.processAddress(address));
+    const internationalCount = processedAddresses.filter((a) => a.isInternational).length;
+    const domesticCount = processedAddresses.length - internationalCount;
+    const recommendedAddress = this.findRecommendedAddress(processedAddresses);
+    return {
+      userId: rawData.userId,
+      addresses: processedAddresses,
+      primaryAddress: processedAddresses.find((a) => a.isPrimary),
+      totalAddresses: processedAddresses.length,
+      internationalAddressCount: internationalCount,
+      domesticAddressCount: domesticCount,
+      recommendedAddress,
+      hasValidShippingAddress: processedAddresses.some((a) => a.isValidForShipping)
+    };
+  }
+  processAddress(address) {
+    const isInternational = address.country !== this.DOMESTIC_COUNTRY;
+    const addressType = this.determineAddressType(address);
+    const distanceFromWarehouse = this.calculateDistanceFromWarehouse(address);
+    const taxRate = this.calculateTaxRate(address);
+    return __spreadProps(__spreadValues({}, address), {
+      displayName: this.createDisplayName(address),
+      isInternational,
+      addressType,
+      isValidForShipping: this.validateAddressForShipping(address, addressType),
+      formattedAddress: this.formatAddress(address),
+      distanceFromWarehouse,
+      taxRate
+    });
+  }
+  determineAddressType(address) {
+    const street = address.street.toLowerCase();
+    if (street.includes("po box") || street.includes("p.o. box") || street.includes("p o box") || street.includes("post office box")) {
+      return "po-box";
+    }
+    if (street.includes("suite") || street.includes("ste") || street.includes("floor") || street.includes("building") || street.includes("office") || street.includes("plaza") || street.includes("center") || street.includes("mall")) {
+      return "commercial";
+    }
+    if (street.includes("apt") || street.includes("apartment") || street.includes("unit") || street.includes("#")) {
+      return "residential";
+    }
+    return "residential";
+  }
+  calculateDistanceFromWarehouse(address) {
+    const distances = {
+      "CA": 50,
+      // Close to LA warehouse
+      "NY": 25,
+      // Close to NY warehouse
+      "TX": 30,
+      // Close to Dallas warehouse
+      "NV": 275,
+      // Distance from CA
+      "AZ": 380,
+      // Distance from CA
+      "FL": 1100,
+      // Distance from TX
+      "WA": 1200,
+      // Distance from CA
+      "HI": 2400,
+      // Distance from CA
+      "AK": 2350
+      // Distance from WA
+    };
+    return distances[address.state] || 1e3;
+  }
+  calculateTaxRate(address) {
+    const taxRates = {
+      "CA": 0.0825,
+      // 8.25%
+      "NY": 0.08,
+      // 8%
+      "TX": 0.0625,
+      // 6.25%
+      "FL": 0.06,
+      // 6%
+      "WA": 0.065,
+      // 6.5%
+      "OR": 0,
+      // No sales tax
+      "MT": 0,
+      // No sales tax
+      "NH": 0,
+      // No sales tax
+      "DE": 0
+      // No sales tax
+    };
+    return taxRates[address.state] || 0.05;
+  }
+  validateAddressForShipping(address, addressType) {
+    if (addressType === "po-box") {
+      return false;
+    }
+    const zipRegex = /^\d{5}(-\d{4})?$/;
+    if (!zipRegex.test(address.zipCode)) {
+      return false;
+    }
+    if (!address.street || address.street.trim().length < 5) {
+      return false;
+    }
+    if (!address.city || address.city.trim().length < 2) {
+      return false;
+    }
+    if (!address.state || address.state.trim().length < 2) {
+      return false;
+    }
+    if (address.country !== this.DOMESTIC_COUNTRY) {
+      if (address.country.trim().length < 2) {
+        return false;
+      }
+      const restrictedCountries = ["RESTRICTED_COUNTRY_1", "RESTRICTED_COUNTRY_2"];
+      if (restrictedCountries.includes(address.country.toUpperCase())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  createDisplayName(address) {
+    const parts = [address.city, address.state];
+    return parts.join(", ");
+  }
+  formatAddress(address) {
+    return `${address.street}, ${address.city}, ${address.state} ${address.zipCode}, ${address.country}`;
+  }
+  findRecommendedAddress(addresses) {
+    if (!addresses || addresses.length === 0) {
+      return void 0;
+    }
+    const validAddresses = addresses.filter((addr) => addr.isValidForShipping);
+    if (validAddresses.length === 0) {
+      return void 0;
+    }
+    if (validAddresses.length === 1) {
+      return validAddresses[0];
+    }
+    const primaryAddress = validAddresses.find((addr) => addr.isPrimary);
+    if (primaryAddress) {
+      return primaryAddress;
+    }
+    const domesticAddresses = validAddresses.filter((addr) => !addr.isInternational);
+    if (domesticAddresses.length > 0) {
+      return domesticAddresses[0];
+    }
+    const residentialAddresses = validAddresses.filter((addr) => addr.addressType === "residential");
+    if (residentialAddresses.length > 0) {
+      return residentialAddresses[0];
+    }
+    return validAddresses[0];
+  }
+  // Template helper function
+  trackByAddressId(index, address) {
+    return address.id;
+  }
+  static \u0275fac = function UserAddressComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _UserAddressComponent)(i02.\u0275\u0275directiveInject(UserAddressService));
+  };
+  static \u0275cmp = /* @__PURE__ */ i02.\u0275\u0275defineComponent({ type: _UserAddressComponent, selectors: [["app-user-address"]], decls: 7, vars: 6, consts: [[1, "container"], ["class", "address-info", 4, "ngIf"], ["class", "loading", 4, "ngIf"], [1, "address-info"], [1, "business-summary"], [1, "summary-grid"], [1, "summary-item"], [1, "label"], [1, "value"], ["class", "recommended-address", 4, "ngIf"], ["class", "primary-address", 4, "ngIf"], [1, "all-addresses"], ["class", "address-card", 4, "ngFor", "ngForOf", "ngForTrackBy"], [1, "recommended-address"], [1, "address-card", "recommended"], [1, "address-header"], [1, "badges"], [1, "type-badge"], [1, "distance-badge"], [1, "address-details"], ["class", "detail", 4, "ngIf"], [1, "detail"], [1, "primary-address"], [1, "address-card", "primary"], [1, "primary-badge"], ["class", "detail valid", 4, "ngIf"], ["class", "detail invalid", 4, "ngIf"], [1, "detail", "valid"], [1, "detail", "invalid"], [1, "address-card"], ["class", "primary-badge", 4, "ngIf"], ["class", "international-badge", 4, "ngIf"], [1, "international-badge"], [1, "loading"]], template: function UserAddressComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      i02.\u0275\u0275elementStart(0, "div", 0)(1, "h1");
+      i02.\u0275\u0275text(2, "User Address Information with Business Logic");
+      i02.\u0275\u0275elementEnd();
+      i02.\u0275\u0275template(3, UserAddressComponent_div_3_Template, 31, 14, "div", 1);
+      i02.\u0275\u0275pipe(4, "async");
+      i02.\u0275\u0275template(5, UserAddressComponent_div_5_Template, 2, 0, "div", 2);
+      i02.\u0275\u0275pipe(6, "async");
+      i02.\u0275\u0275elementEnd();
+    }
+    if (rf & 2) {
+      i02.\u0275\u0275advance(3);
+      i02.\u0275\u0275property("ngIf", i02.\u0275\u0275pipeBind1(4, 2, ctx.processedAddressInfo$));
+      i02.\u0275\u0275advance(2);
+      i02.\u0275\u0275property("ngIf", !i02.\u0275\u0275pipeBind1(6, 4, ctx.processedAddressInfo$));
+    }
+  }, dependencies: [CommonModule, i2.NgClass, i2.NgComponentOutlet, i2.NgForOf, i2.NgIf, i2.NgTemplateOutlet, i2.NgStyle, i2.NgSwitch, i2.NgSwitchCase, i2.NgSwitchDefault, i2.NgPlural, i2.NgPluralCase, i2.AsyncPipe, i2.UpperCasePipe, i2.LowerCasePipe, i2.JsonPipe, i2.SlicePipe, i2.DecimalPipe, i2.PercentPipe, i2.TitleCasePipe, i2.CurrencyPipe, i2.DatePipe, i2.I18nPluralPipe, i2.I18nSelectPipe, i2.KeyValuePipe], styles: ['\n\n.container[_ngcontent-%COMP%] {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding: 20px;\n  font-family:\n    "Segoe UI",\n    Tahoma,\n    Geneva,\n    Verdana,\n    sans-serif;\n}\nh1[_ngcontent-%COMP%] {\n  color: #2c3e50;\n  text-align: center;\n  margin-bottom: 30px;\n}\nh3[_ngcontent-%COMP%] {\n  color: #2c3e50;\n  margin-top: 20px;\n}\nh4[_ngcontent-%COMP%] {\n  color: #34495e;\n  margin: 20px 0 15px 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.address-info[_ngcontent-%COMP%] {\n  background-color: #f8f9fa;\n  padding: 20px;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n.business-summary[_ngcontent-%COMP%] {\n  background-color: #e3f2fd;\n  padding: 20px;\n  border-radius: 8px;\n  margin-bottom: 25px;\n  border-left: 4px solid #2196f3;\n}\n.summary-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 15px;\n  margin-top: 15px;\n}\n.summary-item[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px;\n  background-color: white;\n  border-radius: 6px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.summary-item[_ngcontent-%COMP%]   .label[_ngcontent-%COMP%] {\n  font-weight: 600;\n  color: #555;\n}\n.summary-item[_ngcontent-%COMP%]   .value[_ngcontent-%COMP%] {\n  font-weight: bold;\n  color: #2c3e50;\n}\n.summary-item[_ngcontent-%COMP%]   .value.valid[_ngcontent-%COMP%] {\n  color: #27ae60;\n}\n.summary-item[_ngcontent-%COMP%]   .value.invalid[_ngcontent-%COMP%] {\n  color: #e74c3c;\n}\n.recommended-address[_ngcontent-%COMP%] {\n  margin-bottom: 25px;\n}\n.address-card.recommended[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #fff3cd 0%,\n      #ffeeba 100%);\n  border-left: 4px solid #ffc107;\n  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);\n}\n.primary-address[_ngcontent-%COMP%] {\n  margin-bottom: 25px;\n}\n.address-card.primary[_ngcontent-%COMP%] {\n  background-color: #e8f6f3;\n  border-left: 4px solid #27ae60;\n}\n.all-addresses[_ngcontent-%COMP%] {\n  margin-top: 25px;\n}\n.address-card[_ngcontent-%COMP%] {\n  background-color: white;\n  padding: 20px;\n  margin-bottom: 15px;\n  border-radius: 8px;\n  border: 1px solid #e0e0e0;\n  transition: all 0.3s ease;\n}\n.address-card[_ngcontent-%COMP%]:hover {\n  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);\n  transform: translateY(-2px);\n}\n.address-header[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.address-header[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]:first-child {\n  font-weight: bold;\n  color: #2c3e50;\n  font-size: 1.1em;\n}\n.badges[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.primary-badge[_ngcontent-%COMP%] {\n  background-color: #27ae60;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.type-badge[_ngcontent-%COMP%] {\n  background-color: #3498db;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.distance-badge[_ngcontent-%COMP%] {\n  background-color: #9b59b6;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.international-badge[_ngcontent-%COMP%] {\n  background-color: #e67e22;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.address-details[_ngcontent-%COMP%] {\n  margin-top: 15px;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.detail[_ngcontent-%COMP%] {\n  background-color: #f8f9fa;\n  padding: 6px 12px;\n  border-radius: 20px;\n  font-size: 13px;\n  color: #555;\n  border: 1px solid #e9ecef;\n}\n.detail.valid[_ngcontent-%COMP%] {\n  background-color: #d4edda;\n  color: #155724;\n  border-color: #c3e6cb;\n}\n.detail.invalid[_ngcontent-%COMP%] {\n  background-color: #f8d7da;\n  color: #721c24;\n  border-color: #f5c6cb;\n}\n.loading[_ngcontent-%COMP%] {\n  text-align: center;\n  padding: 50px;\n  font-size: 18px;\n  color: #7f8c8d;\n  background-color: #f8f9fa;\n  border-radius: 8px;\n}\np[_ngcontent-%COMP%] {\n  margin: 8px 0;\n  color: #555;\n  line-height: 1.5;\n}\n@media (max-width: 768px) {\n  .container[_ngcontent-%COMP%] {\n    padding: 15px;\n  }\n  .summary-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n  .address-header[_ngcontent-%COMP%] {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .badges[_ngcontent-%COMP%] {\n    width: 100%;\n  }\n  .address-details[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=user-address.component.css.map */'] });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i02.\u0275setClassMetadata(UserAddressComponent, [{
+    type: Component,
+    args: [{ selector: "app-user-address", standalone: true, imports: [CommonModule], template: `<!-- User Address Service Demo with Business Logic -->\r
+<div class="container">\r
+  <h1>User Address Information with Business Logic</h1>\r
+  \r
+  <div class="address-info" *ngIf="processedAddressInfo$ | async as addressInfo">\r
+    \r
+    <!-- Business Summary Section -->\r
+    <div class="business-summary">\r
+      <h3>Business Summary for User: {{ addressInfo.userId }}</h3>\r
+      <div class="summary-grid">\r
+        <div class="summary-item">\r
+          <span class="label">Total Addresses:</span>\r
+          <span class="value">{{ addressInfo.totalAddresses }}</span>\r
+        </div>\r
+        <div class="summary-item">\r
+          <span class="label">Domestic:</span>\r
+          <span class="value">{{ addressInfo.domesticAddressCount }}</span>\r
+        </div>\r
+        <div class="summary-item">\r
+          <span class="label">International:</span>\r
+          <span class="value">{{ addressInfo.internationalAddressCount }}</span>\r
+        </div>\r
+        <div class="summary-item">\r
+          <span class="label">Valid for Shipping:</span>\r
+          <span class="value" [class.valid]="addressInfo.hasValidShippingAddress" \r
+                [class.invalid]="!addressInfo.hasValidShippingAddress">\r
+            {{ addressInfo.hasValidShippingAddress ? 'Yes' : 'No' }}\r
+          </span>\r
+        </div>\r
+      </div>\r
+    </div>\r
+\r
+    <!-- Recommended Address Section -->\r
+    <div class="recommended-address" *ngIf="addressInfo.recommendedAddress">\r
+      <h4>\u{1F4A1} Recommended Address</h4>\r
+      <div class="address-card recommended">\r
+        <div class="address-header">\r
+          <span>{{ addressInfo.recommendedAddress.displayName }}</span>\r
+          <div class="badges">\r
+            <span class="type-badge">{{ addressInfo.recommendedAddress.addressType | titlecase }}</span>\r
+            <span class="distance-badge">{{ addressInfo.recommendedAddress.distanceFromWarehouse }} miles</span>\r
+          </div>\r
+        </div>\r
+        <p>{{ addressInfo.recommendedAddress.formattedAddress }}</p>\r
+        <div class="address-details">\r
+          <span class="detail" *ngIf="addressInfo.recommendedAddress.isInternational">International</span>\r
+          <span class="detail" *ngIf="!addressInfo.recommendedAddress.isInternational">Domestic</span>\r
+          <span class="detail">Tax: {{ (addressInfo.recommendedAddress.taxRate * 100).toFixed(2) }}%</span>\r
+        </div>\r
+      </div>\r
+    </div>\r
+    \r
+    <!-- Primary Address Section -->\r
+    <div class="primary-address" *ngIf="addressInfo.primaryAddress">\r
+      <h4>\u{1F3E0} Primary Address</h4>\r
+      <div class="address-card primary">\r
+        <div class="address-header">\r
+          <span>{{ addressInfo.primaryAddress.displayName }}</span>\r
+          <div class="badges">\r
+            <span class="primary-badge">Primary</span>\r
+            <span class="type-badge">{{ addressInfo.primaryAddress.addressType | titlecase }}</span>\r
+            <span class="distance-badge">{{ addressInfo.primaryAddress.distanceFromWarehouse }} miles</span>\r
+          </div>\r
+        </div>\r
+        <p>{{ addressInfo.primaryAddress.formattedAddress }}</p>\r
+        <div class="address-details">\r
+          <span class="detail" *ngIf="addressInfo.primaryAddress.isInternational">International</span>\r
+          <span class="detail" *ngIf="!addressInfo.primaryAddress.isInternational">Domestic</span>\r
+          <span class="detail">Tax: {{ (addressInfo.primaryAddress.taxRate * 100).toFixed(2) }}%</span>\r
+          <span class="detail valid" *ngIf="addressInfo.primaryAddress.isValidForShipping">\u2713 Valid for shipping</span>\r
+          <span class="detail invalid" *ngIf="!addressInfo.primaryAddress.isValidForShipping">\u2717 Not valid for shipping</span>\r
+        </div>\r
+      </div>\r
+    </div>\r
+    \r
+    <!-- All Addresses Section -->\r
+    <div class="all-addresses">\r
+      <h4>\u{1F4CD} All Addresses ({{ addressInfo.totalAddresses }})</h4>\r
+      <div class="address-card" *ngFor="let address of addressInfo.addresses; trackBy: trackByAddressId">\r
+        <div class="address-header">\r
+          <span>{{ address.displayName }}</span>\r
+          <div class="badges">\r
+            <span class="primary-badge" *ngIf="address.isPrimary">Primary</span>\r
+            <span class="type-badge">{{ address.addressType | titlecase }}</span>\r
+            <span class="distance-badge">{{ address.distanceFromWarehouse }} miles</span>\r
+            <span class="international-badge" *ngIf="address.isInternational">International</span>\r
+          </div>\r
+        </div>\r
+        <p>{{ address.formattedAddress }}</p>\r
+        <div class="address-details">\r
+          <span class="detail">Tax: {{ (address.taxRate * 100).toFixed(2) }}%</span>\r
+          <span class="detail valid" *ngIf="address.isValidForShipping">\u2713 Valid for shipping</span>\r
+          <span class="detail invalid" *ngIf="!address.isValidForShipping">\u2717 Not valid for shipping</span>\r
+        </div>\r
+      </div>\r
+    </div>\r
+  </div>\r
+  \r
+  <div class="loading" *ngIf="!(processedAddressInfo$ | async)">\r
+    Loading and processing user address information...\r
+  </div>\r
+</div>\r
+`, styles: ['/* src/app/components/user-address.component.scss */\n.container {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding: 20px;\n  font-family:\n    "Segoe UI",\n    Tahoma,\n    Geneva,\n    Verdana,\n    sans-serif;\n}\nh1 {\n  color: #2c3e50;\n  text-align: center;\n  margin-bottom: 30px;\n}\nh3 {\n  color: #2c3e50;\n  margin-top: 20px;\n}\nh4 {\n  color: #34495e;\n  margin: 20px 0 15px 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.address-info {\n  background-color: #f8f9fa;\n  padding: 20px;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n.business-summary {\n  background-color: #e3f2fd;\n  padding: 20px;\n  border-radius: 8px;\n  margin-bottom: 25px;\n  border-left: 4px solid #2196f3;\n}\n.summary-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 15px;\n  margin-top: 15px;\n}\n.summary-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px;\n  background-color: white;\n  border-radius: 6px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n}\n.summary-item .label {\n  font-weight: 600;\n  color: #555;\n}\n.summary-item .value {\n  font-weight: bold;\n  color: #2c3e50;\n}\n.summary-item .value.valid {\n  color: #27ae60;\n}\n.summary-item .value.invalid {\n  color: #e74c3c;\n}\n.recommended-address {\n  margin-bottom: 25px;\n}\n.address-card.recommended {\n  background:\n    linear-gradient(\n      135deg,\n      #fff3cd 0%,\n      #ffeeba 100%);\n  border-left: 4px solid #ffc107;\n  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);\n}\n.primary-address {\n  margin-bottom: 25px;\n}\n.address-card.primary {\n  background-color: #e8f6f3;\n  border-left: 4px solid #27ae60;\n}\n.all-addresses {\n  margin-top: 25px;\n}\n.address-card {\n  background-color: white;\n  padding: 20px;\n  margin-bottom: 15px;\n  border-radius: 8px;\n  border: 1px solid #e0e0e0;\n  transition: all 0.3s ease;\n}\n.address-card:hover {\n  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);\n  transform: translateY(-2px);\n}\n.address-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.address-header span:first-child {\n  font-weight: bold;\n  color: #2c3e50;\n  font-size: 1.1em;\n}\n.badges {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.primary-badge {\n  background-color: #27ae60;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.type-badge {\n  background-color: #3498db;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.distance-badge {\n  background-color: #9b59b6;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.international-badge {\n  background-color: #e67e22;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: bold;\n}\n.address-details {\n  margin-top: 15px;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.detail {\n  background-color: #f8f9fa;\n  padding: 6px 12px;\n  border-radius: 20px;\n  font-size: 13px;\n  color: #555;\n  border: 1px solid #e9ecef;\n}\n.detail.valid {\n  background-color: #d4edda;\n  color: #155724;\n  border-color: #c3e6cb;\n}\n.detail.invalid {\n  background-color: #f8d7da;\n  color: #721c24;\n  border-color: #f5c6cb;\n}\n.loading {\n  text-align: center;\n  padding: 50px;\n  font-size: 18px;\n  color: #7f8c8d;\n  background-color: #f8f9fa;\n  border-radius: 8px;\n}\np {\n  margin: 8px 0;\n  color: #555;\n  line-height: 1.5;\n}\n@media (max-width: 768px) {\n  .container {\n    padding: 15px;\n  }\n  .summary-grid {\n    grid-template-columns: 1fr;\n  }\n  .address-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .badges {\n    width: 100%;\n  }\n  .address-details {\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=user-address.component.css.map */\n'] }]
+  }], () => [{ type: UserAddressService }], null);
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i02.\u0275setClassDebugInfo(UserAddressComponent, { className: "UserAddressComponent", filePath: "src/app/components/user-address.component.ts", lineNumber: 36 });
+})();
+(() => {
+  const id = "src%2Fapp%2Fcomponents%2Fuser-address.component.ts%40UserAddressComponent";
+  function UserAddressComponent_HmrLoad(t) {
+    import(
+      /* @vite-ignore */
+      __vite__injectQuery(i02.\u0275\u0275getReplaceMetadataURL(id, t, import.meta.url), 'import')
+    ).then((m) => m.default && i02.\u0275\u0275replaceMetadata(UserAddressComponent, m.default, [i02, i2, user_address_service_exports], [CommonModule, Component], import.meta, id));
+  }
+  (typeof ngDevMode === "undefined" || ngDevMode) && UserAddressComponent_HmrLoad(Date.now());
+  (typeof ngDevMode === "undefined" || ngDevMode) && (import.meta.hot && import.meta.hot.on("angular:component-update", (d) => d.id === id && UserAddressComponent_HmrLoad(d.timestamp)));
+})();
+export {
+  UserAddressComponent
+};
+
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy91c2VyLWFkZHJlc3MuY29tcG9uZW50LnRzIiwic3JjL2FwcC9jb21wb25lbnRzL3VzZXItYWRkcmVzcy5jb21wb25lbnQuaHRtbCIsInNyYy9hcHAvc2VydmljZXMvdXNlci1hZGRyZXNzLnNlcnZpY2UudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50LCBPbkluaXQgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcclxuaW1wb3J0IHsgQ29tbW9uTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29tbW9uJztcclxuaW1wb3J0IHsgVXNlckFkZHJlc3NTZXJ2aWNlIH0gZnJvbSAnLi4vc2VydmljZXMvdXNlci1hZGRyZXNzLnNlcnZpY2UnO1xyXG5pbXBvcnQgeyBVc2VyQWRkcmVzc0luZm8sIEFkZHJlc3MgfSBmcm9tICcuLi9tb2RlbHMvYWRkcmVzcy5pbnRlcmZhY2UnO1xyXG5pbXBvcnQgeyBPYnNlcnZhYmxlLCBtYXAgfSBmcm9tICdyeGpzJztcclxuXHJcbi8vIEJ1c2luZXNzIGxvZ2ljIGludGVyZmFjZXNcclxuaW50ZXJmYWNlIFByb2Nlc3NlZEFkZHJlc3MgZXh0ZW5kcyBBZGRyZXNzIHtcclxuICBkaXNwbGF5TmFtZTogc3RyaW5nO1xyXG4gIGlzSW50ZXJuYXRpb25hbDogYm9vbGVhbjtcclxuICBhZGRyZXNzVHlwZTogJ3Jlc2lkZW50aWFsJyB8ICdjb21tZXJjaWFsJyB8ICdwby1ib3gnO1xyXG4gIGlzVmFsaWRGb3JTaGlwcGluZzogYm9vbGVhbjtcclxuICBmb3JtYXR0ZWRBZGRyZXNzOiBzdHJpbmc7XHJcbiAgZGlzdGFuY2VGcm9tV2FyZWhvdXNlPzogbnVtYmVyO1xyXG4gIHRheFJhdGU6IG51bWJlcjtcclxufVxyXG5cclxuaW50ZXJmYWNlIFByb2Nlc3NlZFVzZXJBZGRyZXNzSW5mbyB7XHJcbiAgdXNlcklkOiBzdHJpbmc7XHJcbiAgYWRkcmVzc2VzOiBQcm9jZXNzZWRBZGRyZXNzW107XHJcbiAgcHJpbWFyeUFkZHJlc3M/OiBQcm9jZXNzZWRBZGRyZXNzO1xyXG4gIHRvdGFsQWRkcmVzc2VzOiBudW1iZXI7XHJcbiAgaW50ZXJuYXRpb25hbEFkZHJlc3NDb3VudDogbnVtYmVyO1xyXG4gIGRvbWVzdGljQWRkcmVzc0NvdW50OiBudW1iZXI7XHJcbiAgcmVjb21tZW5kZWRBZGRyZXNzPzogUHJvY2Vzc2VkQWRkcmVzcztcclxuICBoYXNWYWxpZFNoaXBwaW5nQWRkcmVzczogYm9vbGVhbjtcclxufVxyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgc2VsZWN0b3I6ICdhcHAtdXNlci1hZGRyZXNzJyxcclxuICBzdGFuZGFsb25lOiB0cnVlLFxyXG4gIGltcG9ydHM6IFtDb21tb25Nb2R1bGVdLFxyXG4gIHRlbXBsYXRlVXJsOiAnLi91c2VyLWFkZHJlc3MuY29tcG9uZW50Lmh0bWwnLFxyXG4gIHN0eWxlVXJsczogWycuL3VzZXItYWRkcmVzcy5jb21wb25lbnQuc2NzcyddXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBVc2VyQWRkcmVzc0NvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XHJcbiAgcHJvY2Vzc2VkQWRkcmVzc0luZm8kITogT2JzZXJ2YWJsZTxQcm9jZXNzZWRVc2VyQWRkcmVzc0luZm8+O1xyXG4gIFxyXG4gIC8vIEJ1c2luZXNzIGxvZ2ljIGNvbmZpZ3VyYXRpb25cclxuICBwcml2YXRlIHJlYWRvbmx5IERPTUVTVElDX0NPVU5UUlkgPSAnVVNBJztcclxuICBwcml2YXRlIHJlYWRvbmx5IFdBUkVIT1VTRV9MT0NBVElPTlMgPSBbXHJcbiAgICB7IHN0YXRlOiAnQ0EnLCBjaXR5OiAnTG9zIEFuZ2VsZXMnIH0sXHJcbiAgICB7IHN0YXRlOiAnTlknLCBjaXR5OiAnTmV3IFlvcmsnIH0sXHJcbiAgICB7IHN0YXRlOiAnVFgnLCBjaXR5OiAnRGFsbGFzJyB9XHJcbiAgXTtcclxuXHJcbiAgY29uc3RydWN0b3IocHJpdmF0ZSB1c2VyQWRkcmVzc1NlcnZpY2U6IFVzZXJBZGRyZXNzU2VydmljZSkge31cclxuXHJcbiAgbmdPbkluaXQoKSB7XHJcbiAgICB0aGlzLnByb2Nlc3NlZEFkZHJlc3NJbmZvJCA9IHRoaXMudXNlckFkZHJlc3NTZXJ2aWNlXHJcbiAgICAgIC5nZXRVc2VyQWRkcmVzc0luZm8oJ3VzZXItMTIzJylcclxuICAgICAgLnBpcGUoXHJcbiAgICAgICAgbWFwKHJhd0RhdGEgPT4gdGhpcy5hcHBseUJ1c2luZXNzTG9naWMocmF3RGF0YSkpXHJcbiAgICAgICk7XHJcbiAgfVxyXG5cclxuICBwcml2YXRlIGFwcGx5QnVzaW5lc3NMb2dpYyhyYXdEYXRhOiBVc2VyQWRkcmVzc0luZm8pOiBQcm9jZXNzZWRVc2VyQWRkcmVzc0luZm8ge1xyXG4gICAgY29uc3QgcHJvY2Vzc2VkQWRkcmVzc2VzID0gcmF3RGF0YS5hZGRyZXNzZXMubWFwKGFkZHJlc3MgPT4gXHJcbiAgICAgIHRoaXMucHJvY2Vzc0FkZHJlc3MoYWRkcmVzcylcclxuICAgICk7XHJcblxyXG4gICAgY29uc3QgaW50ZXJuYXRpb25hbENvdW50ID0gcHJvY2Vzc2VkQWRkcmVzc2VzLmZpbHRlcihhID0+IGEuaXNJbnRlcm5hdGlvbmFsKS5sZW5ndGg7XHJcbiAgICBjb25zdCBkb21lc3RpY0NvdW50ID0gcHJvY2Vzc2VkQWRkcmVzc2VzLmxlbmd0aCAtIGludGVybmF0aW9uYWxDb3VudDtcclxuICAgIGNvbnN0IHJlY29tbWVuZGVkQWRkcmVzcyA9IHRoaXMuZmluZFJlY29tbWVuZGVkQWRkcmVzcyhwcm9jZXNzZWRBZGRyZXNzZXMpO1xyXG5cclxuICAgIHJldHVybiB7XHJcbiAgICAgIHVzZXJJZDogcmF3RGF0YS51c2VySWQsXHJcbiAgICAgIGFkZHJlc3NlczogcHJvY2Vzc2VkQWRkcmVzc2VzLFxyXG4gICAgICBwcmltYXJ5QWRkcmVzczogcHJvY2Vzc2VkQWRkcmVzc2VzLmZpbmQoYSA9PiBhLmlzUHJpbWFyeSksXHJcbiAgICAgIHRvdGFsQWRkcmVzc2VzOiBwcm9jZXNzZWRBZGRyZXNzZXMubGVuZ3RoLFxyXG4gICAgICBpbnRlcm5hdGlvbmFsQWRkcmVzc0NvdW50OiBpbnRlcm5hdGlvbmFsQ291bnQsXHJcbiAgICAgIGRvbWVzdGljQWRkcmVzc0NvdW50OiBkb21lc3RpY0NvdW50LFxyXG4gICAgICByZWNvbW1lbmRlZEFkZHJlc3MsXHJcbiAgICAgIGhhc1ZhbGlkU2hpcHBpbmdBZGRyZXNzOiBwcm9jZXNzZWRBZGRyZXNzZXMuc29tZShhID0+IGEuaXNWYWxpZEZvclNoaXBwaW5nKVxyXG4gICAgfTtcclxuICB9XHJcblxyXG4gIHByaXZhdGUgcHJvY2Vzc0FkZHJlc3MoYWRkcmVzczogQWRkcmVzcyk6IFByb2Nlc3NlZEFkZHJlc3Mge1xyXG4gICAgY29uc3QgaXNJbnRlcm5hdGlvbmFsID0gYWRkcmVzcy5jb3VudHJ5ICE9PSB0aGlzLkRPTUVTVElDX0NPVU5UUlk7XHJcbiAgICBjb25zdCBhZGRyZXNzVHlwZSA9IHRoaXMuZGV0ZXJtaW5lQWRkcmVzc1R5cGUoYWRkcmVzcyk7XHJcbiAgICBjb25zdCBkaXN0YW5jZUZyb21XYXJlaG91c2UgPSB0aGlzLmNhbGN1bGF0ZURpc3RhbmNlRnJvbVdhcmVob3VzZShhZGRyZXNzKTtcclxuICAgIGNvbnN0IHRheFJhdGUgPSB0aGlzLmNhbGN1bGF0ZVRheFJhdGUoYWRkcmVzcyk7XHJcblxyXG4gICAgcmV0dXJuIHtcclxuICAgICAgLi4uYWRkcmVzcyxcclxuICAgICAgZGlzcGxheU5hbWU6IHRoaXMuY3JlYXRlRGlzcGxheU5hbWUoYWRkcmVzcyksXHJcbiAgICAgIGlzSW50ZXJuYXRpb25hbCxcclxuICAgICAgYWRkcmVzc1R5cGUsXHJcbiAgICAgIGlzVmFsaWRGb3JTaGlwcGluZzogdGhpcy52YWxpZGF0ZUFkZHJlc3NGb3JTaGlwcGluZyhhZGRyZXNzLCBhZGRyZXNzVHlwZSksXHJcbiAgICAgIGZvcm1hdHRlZEFkZHJlc3M6IHRoaXMuZm9ybWF0QWRkcmVzcyhhZGRyZXNzKSxcclxuICAgICAgZGlzdGFuY2VGcm9tV2FyZWhvdXNlLFxyXG4gICAgICB0YXhSYXRlXHJcbiAgICB9O1xyXG4gIH1cclxuXHJcbiAgcHJpdmF0ZSBkZXRlcm1pbmVBZGRyZXNzVHlwZShhZGRyZXNzOiBBZGRyZXNzKTogJ3Jlc2lkZW50aWFsJyB8ICdjb21tZXJjaWFsJyB8ICdwby1ib3gnIHtcclxuICAgIGNvbnN0IHN0cmVldCA9IGFkZHJlc3Muc3RyZWV0LnRvTG93ZXJDYXNlKCk7XHJcbiAgICBcclxuICAgIC8vIEJyYW5jaCAxOiBQTyBCb3ggZGV0ZWN0aW9uIChtdWx0aXBsZSBwYXR0ZXJucylcclxuICAgIGlmIChzdHJlZXQuaW5jbHVkZXMoJ3BvIGJveCcpIHx8IHN0cmVldC5pbmNsdWRlcygncC5vLiBib3gnKSB8fCBcclxuICAgICAgICBzdHJlZXQuaW5jbHVkZXMoJ3AgbyBib3gnKSB8fCBzdHJlZXQuaW5jbHVkZXMoJ3Bvc3Qgb2ZmaWNlIGJveCcpKSB7XHJcbiAgICAgIHJldHVybiAncG8tYm94JztcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDI6IENvbW1lcmNpYWwgaW5kaWNhdG9ycyAobXVsdGlwbGUgcGF0dGVybnMpXHJcbiAgICBpZiAoc3RyZWV0LmluY2x1ZGVzKCdzdWl0ZScpIHx8IHN0cmVldC5pbmNsdWRlcygnc3RlJykgfHwgXHJcbiAgICAgICAgc3RyZWV0LmluY2x1ZGVzKCdmbG9vcicpIHx8IHN0cmVldC5pbmNsdWRlcygnYnVpbGRpbmcnKSB8fCBcclxuICAgICAgICBzdHJlZXQuaW5jbHVkZXMoJ29mZmljZScpIHx8IHN0cmVldC5pbmNsdWRlcygncGxhemEnKSB8fFxyXG4gICAgICAgIHN0cmVldC5pbmNsdWRlcygnY2VudGVyJykgfHwgc3RyZWV0LmluY2x1ZGVzKCdtYWxsJykpIHtcclxuICAgICAgcmV0dXJuICdjb21tZXJjaWFsJztcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDM6IEFwYXJ0bWVudC9Vbml0IGluZGljYXRvcnMgKHN0aWxsIHJlc2lkZW50aWFsKVxyXG4gICAgaWYgKHN0cmVldC5pbmNsdWRlcygnYXB0JykgfHwgc3RyZWV0LmluY2x1ZGVzKCdhcGFydG1lbnQnKSB8fCBcclxuICAgICAgICBzdHJlZXQuaW5jbHVkZXMoJ3VuaXQnKSB8fCBzdHJlZXQuaW5jbHVkZXMoJyMnKSkge1xyXG4gICAgICByZXR1cm4gJ3Jlc2lkZW50aWFsJztcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDQ6IERlZmF1bHQgY2FzZVxyXG4gICAgcmV0dXJuICdyZXNpZGVudGlhbCc7XHJcbiAgfVxyXG5cclxuICBwcml2YXRlIGNhbGN1bGF0ZURpc3RhbmNlRnJvbVdhcmVob3VzZShhZGRyZXNzOiBBZGRyZXNzKTogbnVtYmVyIHtcclxuICAgIC8vIFNpbXBsaWZpZWQgZGlzdGFuY2UgY2FsY3VsYXRpb24gYmFzZWQgb24gc3RhdGVcclxuICAgIGNvbnN0IGRpc3RhbmNlczogeyBba2V5OiBzdHJpbmddOiBudW1iZXIgfSA9IHtcclxuICAgICAgJ0NBJzogNTAsICAgLy8gQ2xvc2UgdG8gTEEgd2FyZWhvdXNlXHJcbiAgICAgICdOWSc6IDI1LCAgIC8vIENsb3NlIHRvIE5ZIHdhcmVob3VzZVxyXG4gICAgICAnVFgnOiAzMCwgICAvLyBDbG9zZSB0byBEYWxsYXMgd2FyZWhvdXNlXHJcbiAgICAgICdOVic6IDI3NSwgIC8vIERpc3RhbmNlIGZyb20gQ0FcclxuICAgICAgJ0FaJzogMzgwLCAgLy8gRGlzdGFuY2UgZnJvbSBDQVxyXG4gICAgICAnRkwnOiAxMTAwLCAvLyBEaXN0YW5jZSBmcm9tIFRYXHJcbiAgICAgICdXQSc6IDEyMDAsIC8vIERpc3RhbmNlIGZyb20gQ0FcclxuICAgICAgJ0hJJzogMjQwMCwgLy8gRGlzdGFuY2UgZnJvbSBDQVxyXG4gICAgICAnQUsnOiAyMzUwICAvLyBEaXN0YW5jZSBmcm9tIFdBXHJcbiAgICB9O1xyXG4gICAgXHJcbiAgICByZXR1cm4gZGlzdGFuY2VzW2FkZHJlc3Muc3RhdGVdIHx8IDEwMDA7IC8vIERlZmF1bHQgZGlzdGFuY2VcclxuICB9XHJcblxyXG4gIHByaXZhdGUgY2FsY3VsYXRlVGF4UmF0ZShhZGRyZXNzOiBBZGRyZXNzKTogbnVtYmVyIHtcclxuICAgIC8vIFN0YXRlIHRheCByYXRlcyAoc2ltcGxpZmllZClcclxuICAgIGNvbnN0IHRheFJhdGVzOiB7IFtrZXk6IHN0cmluZ106IG51bWJlciB9ID0ge1xyXG4gICAgICAnQ0EnOiAwLjA4MjUsIC8vIDguMjUlXHJcbiAgICAgICdOWSc6IDAuMDgsICAgLy8gOCVcclxuICAgICAgJ1RYJzogMC4wNjI1LCAvLyA2LjI1JVxyXG4gICAgICAnRkwnOiAwLjA2LCAgIC8vIDYlXHJcbiAgICAgICdXQSc6IDAuMDY1LCAgLy8gNi41JVxyXG4gICAgICAnT1InOiAwLjAsICAgIC8vIE5vIHNhbGVzIHRheFxyXG4gICAgICAnTVQnOiAwLjAsICAgIC8vIE5vIHNhbGVzIHRheFxyXG4gICAgICAnTkgnOiAwLjAsICAgIC8vIE5vIHNhbGVzIHRheFxyXG4gICAgICAnREUnOiAwLjAgICAgIC8vIE5vIHNhbGVzIHRheFxyXG4gICAgfTtcclxuICAgIFxyXG4gICAgcmV0dXJuIHRheFJhdGVzW2FkZHJlc3Muc3RhdGVdIHx8IDAuMDU7IC8vIERlZmF1bHQgNSVcclxuICB9XHJcblxyXG4gIHByaXZhdGUgdmFsaWRhdGVBZGRyZXNzRm9yU2hpcHBpbmcoYWRkcmVzczogQWRkcmVzcywgYWRkcmVzc1R5cGU6ICdyZXNpZGVudGlhbCcgfCAnY29tbWVyY2lhbCcgfCAncG8tYm94Jyk6IGJvb2xlYW4ge1xyXG4gICAgLy8gQnJhbmNoIDE6IFBPIEJveCB2YWxpZGF0aW9uXHJcbiAgICBpZiAoYWRkcmVzc1R5cGUgPT09ICdwby1ib3gnKSB7XHJcbiAgICAgIHJldHVybiBmYWxzZTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDI6IFpJUCBjb2RlIHZhbGlkYXRpb25cclxuICAgIGNvbnN0IHppcFJlZ2V4ID0gL15cXGR7NX0oLVxcZHs0fSk/JC87XHJcbiAgICBpZiAoIXppcFJlZ2V4LnRlc3QoYWRkcmVzcy56aXBDb2RlKSkge1xyXG4gICAgICByZXR1cm4gZmFsc2U7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC8vIEJyYW5jaCAzOiBTdHJlZXQgYWRkcmVzcyB2YWxpZGF0aW9uXHJcbiAgICBpZiAoIWFkZHJlc3Muc3RyZWV0IHx8IGFkZHJlc3Muc3RyZWV0LnRyaW0oKS5sZW5ndGggPCA1KSB7XHJcbiAgICAgIHJldHVybiBmYWxzZTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDQ6IENpdHkgdmFsaWRhdGlvblxyXG4gICAgaWYgKCFhZGRyZXNzLmNpdHkgfHwgYWRkcmVzcy5jaXR5LnRyaW0oKS5sZW5ndGggPCAyKSB7XHJcbiAgICAgIHJldHVybiBmYWxzZTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDU6IFN0YXRlIHZhbGlkYXRpb25cclxuICAgIGlmICghYWRkcmVzcy5zdGF0ZSB8fCBhZGRyZXNzLnN0YXRlLnRyaW0oKS5sZW5ndGggPCAyKSB7XHJcbiAgICAgIHJldHVybiBmYWxzZTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDY6IEludGVybmF0aW9uYWwgYWRkcmVzcyB2YWxpZGF0aW9uXHJcbiAgICBpZiAoYWRkcmVzcy5jb3VudHJ5ICE9PSB0aGlzLkRPTUVTVElDX0NPVU5UUlkpIHtcclxuICAgICAgLy8gSW50ZXJuYXRpb25hbCBhZGRyZXNzZXMgaGF2ZSBkaWZmZXJlbnQgdmFsaWRhdGlvbiBydWxlc1xyXG4gICAgICBpZiAoYWRkcmVzcy5jb3VudHJ5LnRyaW0oKS5sZW5ndGggPCAyKSB7XHJcbiAgICAgICAgcmV0dXJuIGZhbHNlO1xyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAvLyBCcmFuY2ggNmE6IFJlc3RyaWN0ZWQgY291bnRyaWVzXHJcbiAgICAgIGNvbnN0IHJlc3RyaWN0ZWRDb3VudHJpZXMgPSBbJ1JFU1RSSUNURURfQ09VTlRSWV8xJywgJ1JFU1RSSUNURURfQ09VTlRSWV8yJ107XHJcbiAgICAgIGlmIChyZXN0cmljdGVkQ291bnRyaWVzLmluY2x1ZGVzKGFkZHJlc3MuY291bnRyeS50b1VwcGVyQ2FzZSgpKSkge1xyXG4gICAgICAgIHJldHVybiBmYWxzZTtcclxuICAgICAgfVxyXG4gICAgfVxyXG4gICAgXHJcbiAgICAvLyBCcmFuY2ggNzogQWxsIHZhbGlkYXRpb25zIHBhc3NlZFxyXG4gICAgcmV0dXJuIHRydWU7XHJcbiAgfVxyXG5cclxuICBwcml2YXRlIGNyZWF0ZURpc3BsYXlOYW1lKGFkZHJlc3M6IEFkZHJlc3MpOiBzdHJpbmcge1xyXG4gICAgY29uc3QgcGFydHMgPSBbYWRkcmVzcy5jaXR5LCBhZGRyZXNzLnN0YXRlXTtcclxuICAgIHJldHVybiBwYXJ0cy5qb2luKCcsICcpO1xyXG4gIH1cclxuXHJcbiAgcHJpdmF0ZSBmb3JtYXRBZGRyZXNzKGFkZHJlc3M6IEFkZHJlc3MpOiBzdHJpbmcge1xyXG4gICAgcmV0dXJuIGAke2FkZHJlc3Muc3RyZWV0fSwgJHthZGRyZXNzLmNpdHl9LCAke2FkZHJlc3Muc3RhdGV9ICR7YWRkcmVzcy56aXBDb2RlfSwgJHthZGRyZXNzLmNvdW50cnl9YDtcclxuICB9XHJcblxyXG4gIHByaXZhdGUgZmluZFJlY29tbWVuZGVkQWRkcmVzcyhhZGRyZXNzZXM6IFByb2Nlc3NlZEFkZHJlc3NbXSk6IFByb2Nlc3NlZEFkZHJlc3MgfCB1bmRlZmluZWQge1xyXG4gICAgLy8gQnJhbmNoIDE6IE5vIGFkZHJlc3NlcyBwcm92aWRlZFxyXG4gICAgaWYgKCFhZGRyZXNzZXMgfHwgYWRkcmVzc2VzLmxlbmd0aCA9PT0gMCkge1xyXG4gICAgICByZXR1cm4gdW5kZWZpbmVkO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICAvLyBCcmFuY2ggMjogRmlsdGVyIHZhbGlkIGFkZHJlc3Nlc1xyXG4gICAgY29uc3QgdmFsaWRBZGRyZXNzZXMgPSBhZGRyZXNzZXMuZmlsdGVyKGFkZHIgPT4gYWRkci5pc1ZhbGlkRm9yU2hpcHBpbmcpO1xyXG4gICAgXHJcbiAgICAvLyBCcmFuY2ggMzogTm8gdmFsaWQgYWRkcmVzc2VzXHJcbiAgICBpZiAodmFsaWRBZGRyZXNzZXMubGVuZ3RoID09PSAwKSB7XHJcbiAgICAgIHJldHVybiB1bmRlZmluZWQ7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC8vIEJyYW5jaCA0OiBTaW5nbGUgdmFsaWQgYWRkcmVzc1xyXG4gICAgaWYgKHZhbGlkQWRkcmVzc2VzLmxlbmd0aCA9PT0gMSkge1xyXG4gICAgICByZXR1cm4gdmFsaWRBZGRyZXNzZXNbMF07XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC8vIEJyYW5jaCA1OiBNdWx0aXBsZSB2YWxpZCBhZGRyZXNzZXMgLSBmaW5kIGJlc3Qgb3B0aW9uXHJcbiAgICAvLyBQcmltYXJ5IGxvZ2ljOiBwcmVmZXIgcHJpbWFyeSBhZGRyZXNzXHJcbiAgICBjb25zdCBwcmltYXJ5QWRkcmVzcyA9IHZhbGlkQWRkcmVzc2VzLmZpbmQoYWRkciA9PiBhZGRyLmlzUHJpbWFyeSk7XHJcbiAgICBpZiAocHJpbWFyeUFkZHJlc3MpIHtcclxuICAgICAgcmV0dXJuIHByaW1hcnlBZGRyZXNzO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICAvLyBCcmFuY2ggNjogUHJlZmVyIGRvbWVzdGljIGFkZHJlc3Nlc1xyXG4gICAgY29uc3QgZG9tZXN0aWNBZGRyZXNzZXMgPSB2YWxpZEFkZHJlc3Nlcy5maWx0ZXIoYWRkciA9PiAhYWRkci5pc0ludGVybmF0aW9uYWwpO1xyXG4gICAgaWYgKGRvbWVzdGljQWRkcmVzc2VzLmxlbmd0aCA+IDApIHtcclxuICAgICAgcmV0dXJuIGRvbWVzdGljQWRkcmVzc2VzWzBdO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICAvLyBCcmFuY2ggNzogUHJlZmVyIHJlc2lkZW50aWFsIGFkZHJlc3Nlc1xyXG4gICAgY29uc3QgcmVzaWRlbnRpYWxBZGRyZXNzZXMgPSB2YWxpZEFkZHJlc3Nlcy5maWx0ZXIoYWRkciA9PiBhZGRyLmFkZHJlc3NUeXBlID09PSAncmVzaWRlbnRpYWwnKTtcclxuICAgIGlmIChyZXNpZGVudGlhbEFkZHJlc3Nlcy5sZW5ndGggPiAwKSB7XHJcbiAgICAgIHJldHVybiByZXNpZGVudGlhbEFkZHJlc3Nlc1swXTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgLy8gQnJhbmNoIDg6IFJldHVybiBmaXJzdCB2YWxpZCBhZGRyZXNzXHJcbiAgICByZXR1cm4gdmFsaWRBZGRyZXNzZXNbMF07XHJcbiAgfVxyXG5cclxuICAvLyBUZW1wbGF0ZSBoZWxwZXIgZnVuY3Rpb25cclxuICB0cmFja0J5QWRkcmVzc0lkKGluZGV4OiBudW1iZXIsIGFkZHJlc3M6IFByb2Nlc3NlZEFkZHJlc3MpOiBzdHJpbmcge1xyXG4gICAgcmV0dXJuIGFkZHJlc3MuaWQ7XHJcbiAgfVxyXG59XHJcbiIsIjwhLS0gVXNlciBBZGRyZXNzIFNlcnZpY2UgRGVtbyB3aXRoIEJ1c2luZXNzIExvZ2ljIC0tPlxyXG48ZGl2IGNsYXNzPVwiY29udGFpbmVyXCI+XHJcbiAgPGgxPlVzZXIgQWRkcmVzcyBJbmZvcm1hdGlvbiB3aXRoIEJ1c2luZXNzIExvZ2ljPC9oMT5cclxuICBcclxuICA8ZGl2IGNsYXNzPVwiYWRkcmVzcy1pbmZvXCIgKm5nSWY9XCJwcm9jZXNzZWRBZGRyZXNzSW5mbyQgfCBhc3luYyBhcyBhZGRyZXNzSW5mb1wiPlxyXG4gICAgXHJcbiAgICA8IS0tIEJ1c2luZXNzIFN1bW1hcnkgU2VjdGlvbiAtLT5cclxuICAgIDxkaXYgY2xhc3M9XCJidXNpbmVzcy1zdW1tYXJ5XCI+XHJcbiAgICAgIDxoMz5CdXNpbmVzcyBTdW1tYXJ5IGZvciBVc2VyOiB7eyBhZGRyZXNzSW5mby51c2VySWQgfX08L2gzPlxyXG4gICAgICA8ZGl2IGNsYXNzPVwic3VtbWFyeS1ncmlkXCI+XHJcbiAgICAgICAgPGRpdiBjbGFzcz1cInN1bW1hcnktaXRlbVwiPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJsYWJlbFwiPlRvdGFsIEFkZHJlc3Nlczo8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cInZhbHVlXCI+e3sgYWRkcmVzc0luZm8udG90YWxBZGRyZXNzZXMgfX08L3NwYW4+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPGRpdiBjbGFzcz1cInN1bW1hcnktaXRlbVwiPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJsYWJlbFwiPkRvbWVzdGljOjwvc3Bhbj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzPVwidmFsdWVcIj57eyBhZGRyZXNzSW5mby5kb21lc3RpY0FkZHJlc3NDb3VudCB9fTwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8ZGl2IGNsYXNzPVwic3VtbWFyeS1pdGVtXCI+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cImxhYmVsXCI+SW50ZXJuYXRpb25hbDo8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cInZhbHVlXCI+e3sgYWRkcmVzc0luZm8uaW50ZXJuYXRpb25hbEFkZHJlc3NDb3VudCB9fTwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8ZGl2IGNsYXNzPVwic3VtbWFyeS1pdGVtXCI+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cImxhYmVsXCI+VmFsaWQgZm9yIFNoaXBwaW5nOjwvc3Bhbj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzPVwidmFsdWVcIiBbY2xhc3MudmFsaWRdPVwiYWRkcmVzc0luZm8uaGFzVmFsaWRTaGlwcGluZ0FkZHJlc3NcIiBcclxuICAgICAgICAgICAgICAgIFtjbGFzcy5pbnZhbGlkXT1cIiFhZGRyZXNzSW5mby5oYXNWYWxpZFNoaXBwaW5nQWRkcmVzc1wiPlxyXG4gICAgICAgICAgICB7eyBhZGRyZXNzSW5mby5oYXNWYWxpZFNoaXBwaW5nQWRkcmVzcyA/ICdZZXMnIDogJ05vJyB9fVxyXG4gICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICA8L2Rpdj5cclxuICAgIDwvZGl2PlxyXG5cclxuICAgIDwhLS0gUmVjb21tZW5kZWQgQWRkcmVzcyBTZWN0aW9uIC0tPlxyXG4gICAgPGRpdiBjbGFzcz1cInJlY29tbWVuZGVkLWFkZHJlc3NcIiAqbmdJZj1cImFkZHJlc3NJbmZvLnJlY29tbWVuZGVkQWRkcmVzc1wiPlxyXG4gICAgICA8aDQ+8J+SoSBSZWNvbW1lbmRlZCBBZGRyZXNzPC9oND5cclxuICAgICAgPGRpdiBjbGFzcz1cImFkZHJlc3MtY2FyZCByZWNvbW1lbmRlZFwiPlxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJhZGRyZXNzLWhlYWRlclwiPlxyXG4gICAgICAgICAgPHNwYW4+e3sgYWRkcmVzc0luZm8ucmVjb21tZW5kZWRBZGRyZXNzLmRpc3BsYXlOYW1lIH19PC9zcGFuPlxyXG4gICAgICAgICAgPGRpdiBjbGFzcz1cImJhZGdlc1wiPlxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzcz1cInR5cGUtYmFkZ2VcIj57eyBhZGRyZXNzSW5mby5yZWNvbW1lbmRlZEFkZHJlc3MuYWRkcmVzc1R5cGUgfCB0aXRsZWNhc2UgfX08L3NwYW4+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwiZGlzdGFuY2UtYmFkZ2VcIj57eyBhZGRyZXNzSW5mby5yZWNvbW1lbmRlZEFkZHJlc3MuZGlzdGFuY2VGcm9tV2FyZWhvdXNlIH19IG1pbGVzPC9zcGFuPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPHA+e3sgYWRkcmVzc0luZm8ucmVjb21tZW5kZWRBZGRyZXNzLmZvcm1hdHRlZEFkZHJlc3MgfX08L3A+XHJcbiAgICAgICAgPGRpdiBjbGFzcz1cImFkZHJlc3MtZGV0YWlsc1wiPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJkZXRhaWxcIiAqbmdJZj1cImFkZHJlc3NJbmZvLnJlY29tbWVuZGVkQWRkcmVzcy5pc0ludGVybmF0aW9uYWxcIj5JbnRlcm5hdGlvbmFsPC9zcGFuPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJkZXRhaWxcIiAqbmdJZj1cIiFhZGRyZXNzSW5mby5yZWNvbW1lbmRlZEFkZHJlc3MuaXNJbnRlcm5hdGlvbmFsXCI+RG9tZXN0aWM8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cImRldGFpbFwiPlRheDoge3sgKGFkZHJlc3NJbmZvLnJlY29tbWVuZGVkQWRkcmVzcy50YXhSYXRlICogMTAwKS50b0ZpeGVkKDIpIH19JTwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICAgIFxyXG4gICAgPCEtLSBQcmltYXJ5IEFkZHJlc3MgU2VjdGlvbiAtLT5cclxuICAgIDxkaXYgY2xhc3M9XCJwcmltYXJ5LWFkZHJlc3NcIiAqbmdJZj1cImFkZHJlc3NJbmZvLnByaW1hcnlBZGRyZXNzXCI+XHJcbiAgICAgIDxoND7wn4+gIFByaW1hcnkgQWRkcmVzczwvaDQ+XHJcbiAgICAgIDxkaXYgY2xhc3M9XCJhZGRyZXNzLWNhcmQgcHJpbWFyeVwiPlxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJhZGRyZXNzLWhlYWRlclwiPlxyXG4gICAgICAgICAgPHNwYW4+e3sgYWRkcmVzc0luZm8ucHJpbWFyeUFkZHJlc3MuZGlzcGxheU5hbWUgfX08L3NwYW4+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzPVwiYmFkZ2VzXCI+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwicHJpbWFyeS1iYWRnZVwiPlByaW1hcnk8L3NwYW4+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwidHlwZS1iYWRnZVwiPnt7IGFkZHJlc3NJbmZvLnByaW1hcnlBZGRyZXNzLmFkZHJlc3NUeXBlIHwgdGl0bGVjYXNlIH19PC9zcGFuPlxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzcz1cImRpc3RhbmNlLWJhZGdlXCI+e3sgYWRkcmVzc0luZm8ucHJpbWFyeUFkZHJlc3MuZGlzdGFuY2VGcm9tV2FyZWhvdXNlIH19IG1pbGVzPC9zcGFuPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPHA+e3sgYWRkcmVzc0luZm8ucHJpbWFyeUFkZHJlc3MuZm9ybWF0dGVkQWRkcmVzcyB9fTwvcD5cclxuICAgICAgICA8ZGl2IGNsYXNzPVwiYWRkcmVzcy1kZXRhaWxzXCI+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cImRldGFpbFwiICpuZ0lmPVwiYWRkcmVzc0luZm8ucHJpbWFyeUFkZHJlc3MuaXNJbnRlcm5hdGlvbmFsXCI+SW50ZXJuYXRpb25hbDwvc3Bhbj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzPVwiZGV0YWlsXCIgKm5nSWY9XCIhYWRkcmVzc0luZm8ucHJpbWFyeUFkZHJlc3MuaXNJbnRlcm5hdGlvbmFsXCI+RG9tZXN0aWM8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cImRldGFpbFwiPlRheDoge3sgKGFkZHJlc3NJbmZvLnByaW1hcnlBZGRyZXNzLnRheFJhdGUgKiAxMDApLnRvRml4ZWQoMikgfX0lPC9zcGFuPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJkZXRhaWwgdmFsaWRcIiAqbmdJZj1cImFkZHJlc3NJbmZvLnByaW1hcnlBZGRyZXNzLmlzVmFsaWRGb3JTaGlwcGluZ1wiPuKckyBWYWxpZCBmb3Igc2hpcHBpbmc8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzcz1cImRldGFpbCBpbnZhbGlkXCIgKm5nSWY9XCIhYWRkcmVzc0luZm8ucHJpbWFyeUFkZHJlc3MuaXNWYWxpZEZvclNoaXBwaW5nXCI+4pyXIE5vdCB2YWxpZCBmb3Igc2hpcHBpbmc8L3NwYW4+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgICBcclxuICAgIDwhLS0gQWxsIEFkZHJlc3NlcyBTZWN0aW9uIC0tPlxyXG4gICAgPGRpdiBjbGFzcz1cImFsbC1hZGRyZXNzZXNcIj5cclxuICAgICAgPGg0PvCfk40gQWxsIEFkZHJlc3NlcyAoe3sgYWRkcmVzc0luZm8udG90YWxBZGRyZXNzZXMgfX0pPC9oND5cclxuICAgICAgPGRpdiBjbGFzcz1cImFkZHJlc3MtY2FyZFwiICpuZ0Zvcj1cImxldCBhZGRyZXNzIG9mIGFkZHJlc3NJbmZvLmFkZHJlc3NlczsgdHJhY2tCeTogdHJhY2tCeUFkZHJlc3NJZFwiPlxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJhZGRyZXNzLWhlYWRlclwiPlxyXG4gICAgICAgICAgPHNwYW4+e3sgYWRkcmVzcy5kaXNwbGF5TmFtZSB9fTwvc3Bhbj5cclxuICAgICAgICAgIDxkaXYgY2xhc3M9XCJiYWRnZXNcIj5cclxuICAgICAgICAgICAgPHNwYW4gY2xhc3M9XCJwcmltYXJ5LWJhZGdlXCIgKm5nSWY9XCJhZGRyZXNzLmlzUHJpbWFyeVwiPlByaW1hcnk8L3NwYW4+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwidHlwZS1iYWRnZVwiPnt7IGFkZHJlc3MuYWRkcmVzc1R5cGUgfCB0aXRsZWNhc2UgfX08L3NwYW4+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwiZGlzdGFuY2UtYmFkZ2VcIj57eyBhZGRyZXNzLmRpc3RhbmNlRnJvbVdhcmVob3VzZSB9fSBtaWxlczwvc3Bhbj5cclxuICAgICAgICAgICAgPHNwYW4gY2xhc3M9XCJpbnRlcm5hdGlvbmFsLWJhZGdlXCIgKm5nSWY9XCJhZGRyZXNzLmlzSW50ZXJuYXRpb25hbFwiPkludGVybmF0aW9uYWw8L3NwYW4+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8cD57eyBhZGRyZXNzLmZvcm1hdHRlZEFkZHJlc3MgfX08L3A+XHJcbiAgICAgICAgPGRpdiBjbGFzcz1cImFkZHJlc3MtZGV0YWlsc1wiPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJkZXRhaWxcIj5UYXg6IHt7IChhZGRyZXNzLnRheFJhdGUgKiAxMDApLnRvRml4ZWQoMikgfX0lPC9zcGFuPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3M9XCJkZXRhaWwgdmFsaWRcIiAqbmdJZj1cImFkZHJlc3MuaXNWYWxpZEZvclNoaXBwaW5nXCI+4pyTIFZhbGlkIGZvciBzaGlwcGluZzwvc3Bhbj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzPVwiZGV0YWlsIGludmFsaWRcIiAqbmdJZj1cIiFhZGRyZXNzLmlzVmFsaWRGb3JTaGlwcGluZ1wiPuKclyBOb3QgdmFsaWQgZm9yIHNoaXBwaW5nPC9zcGFuPlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICA8L2Rpdj5cclxuICAgIDwvZGl2PlxyXG4gIDwvZGl2PlxyXG4gIFxyXG4gIDxkaXYgY2xhc3M9XCJsb2FkaW5nXCIgKm5nSWY9XCIhKHByb2Nlc3NlZEFkZHJlc3NJbmZvJCB8IGFzeW5jKVwiPlxyXG4gICAgTG9hZGluZyBhbmQgcHJvY2Vzc2luZyB1c2VyIGFkZHJlc3MgaW5mb3JtYXRpb24uLi5cclxuICA8L2Rpdj5cclxuPC9kaXY+XHJcbiIsImltcG9ydCB7IEluamVjdGFibGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcclxuaW1wb3J0IHsgT2JzZXJ2YWJsZSwgb2YsIGRlbGF5IH0gZnJvbSAncnhqcyc7XHJcbmltcG9ydCB7IEFkZHJlc3MsIFVzZXJBZGRyZXNzSW5mbyB9IGZyb20gJy4uL21vZGVscy9hZGRyZXNzLmludGVyZmFjZSc7XHJcblxyXG5ASW5qZWN0YWJsZSh7XHJcbiAgcHJvdmlkZWRJbjogJ3Jvb3QnXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBVc2VyQWRkcmVzc1NlcnZpY2Uge1xyXG5cclxuICAvKipcclxuICAgKiBHZXRzIHVzZXIgYWRkcmVzcyBpbmZvcm1hdGlvbiBieSB1c2VyIElEXHJcbiAgICogQHBhcmFtIHVzZXJJZCAtIFRoZSBJRCBvZiB0aGUgdXNlclxyXG4gICAqIEByZXR1cm5zIE9ic2VydmFibGUgY29udGFpbmluZyB1c2VyIGFkZHJlc3MgaW5mb3JtYXRpb25cclxuICAgKi9cclxuICBnZXRVc2VyQWRkcmVzc0luZm8odXNlcklkOiBzdHJpbmcpOiBPYnNlcnZhYmxlPFVzZXJBZGRyZXNzSW5mbz4ge1xyXG4gICAgLy8gTW9jayBkYXRhIC0gaW4gYSByZWFsIGFwcGxpY2F0aW9uLCB0aGlzIHdvdWxkIGNvbWUgZnJvbSBhbiBBUElcclxuICAgIGNvbnN0IG1vY2tBZGRyZXNzZXM6IEFkZHJlc3NbXSA9IFtcclxuICAgICAge1xyXG4gICAgICAgIGlkOiAnMScsXHJcbiAgICAgICAgc3RyZWV0OiAnMTIzIE1haW4gU3QnLFxyXG4gICAgICAgIGNpdHk6ICdOZXcgWW9yaycsXHJcbiAgICAgICAgc3RhdGU6ICdOWScsXHJcbiAgICAgICAgemlwQ29kZTogJzEwMDAxJyxcclxuICAgICAgICBjb3VudHJ5OiAnVVNBJyxcclxuICAgICAgICBpc1ByaW1hcnk6IHRydWVcclxuICAgICAgfSxcclxuICAgICAge1xyXG4gICAgICAgIGlkOiAnMicsXHJcbiAgICAgICAgc3RyZWV0OiAnNDU2IE9hayBBdmUnLFxyXG4gICAgICAgIGNpdHk6ICdMb3MgQW5nZWxlcycsXHJcbiAgICAgICAgc3RhdGU6ICdDQScsXHJcbiAgICAgICAgemlwQ29kZTogJzkwMjEwJyxcclxuICAgICAgICBjb3VudHJ5OiAnVVNBJyxcclxuICAgICAgICBpc1ByaW1hcnk6IGZhbHNlXHJcbiAgICAgIH1cclxuICAgIF07XHJcblxyXG4gICAgY29uc3QgdXNlckFkZHJlc3NJbmZvOiBVc2VyQWRkcmVzc0luZm8gPSB7XHJcbiAgICAgIHVzZXJJZDogdXNlcklkLFxyXG4gICAgICBhZGRyZXNzZXM6IG1vY2tBZGRyZXNzZXMsXHJcbiAgICAgIHByaW1hcnlBZGRyZXNzOiBtb2NrQWRkcmVzc2VzLmZpbmQoYWRkcmVzcyA9PiBhZGRyZXNzLmlzUHJpbWFyeSlcclxuICAgIH07XHJcblxyXG4gICAgLy8gU2ltdWxhdGUgQVBJIGNhbGwgd2l0aCBkZWxheVxyXG4gICAgcmV0dXJuIG9mKHVzZXJBZGRyZXNzSW5mbykucGlwZShcclxuICAgICAgZGVsYXkoNTAwKSAvLyBTaW11bGF0ZSBuZXR3b3JrIGRlbGF5XHJcbiAgICApO1xyXG4gIH1cclxuXHJcbiAgLyoqXHJcbiAgICogR2V0cyBhbGwgYWRkcmVzc2VzIGZvciBhIHVzZXJcclxuICAgKiBAcGFyYW0gdXNlcklkIC0gVGhlIElEIG9mIHRoZSB1c2VyXHJcbiAgICogQHJldHVybnMgT2JzZXJ2YWJsZSBjb250YWluaW5nIGFycmF5IG9mIGFkZHJlc3Nlc1xyXG4gICAqL1xyXG4gIGdldFVzZXJBZGRyZXNzZXModXNlcklkOiBzdHJpbmcpOiBPYnNlcnZhYmxlPEFkZHJlc3NbXT4ge1xyXG4gICAgcmV0dXJuIG5ldyBPYnNlcnZhYmxlKG9ic2VydmVyID0+IHtcclxuICAgICAgdGhpcy5nZXRVc2VyQWRkcmVzc0luZm8odXNlcklkKS5zdWJzY3JpYmUoe1xyXG4gICAgICAgIG5leHQ6ICh1c2VyQWRkcmVzc0luZm8pID0+IHtcclxuICAgICAgICAgIG9ic2VydmVyLm5leHQodXNlckFkZHJlc3NJbmZvLmFkZHJlc3Nlcyk7XHJcbiAgICAgICAgICBvYnNlcnZlci5jb21wbGV0ZSgpO1xyXG4gICAgICAgIH0sXHJcbiAgICAgICAgZXJyb3I6IChlcnJvcikgPT4gb2JzZXJ2ZXIuZXJyb3IoZXJyb3IpXHJcbiAgICAgIH0pO1xyXG4gICAgfSk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBHZXRzIHRoZSBwcmltYXJ5IGFkZHJlc3MgZm9yIGEgdXNlclxyXG4gICAqIEBwYXJhbSB1c2VySWQgLSBUaGUgSUQgb2YgdGhlIHVzZXJcclxuICAgKiBAcmV0dXJucyBPYnNlcnZhYmxlIGNvbnRhaW5pbmcgdGhlIHByaW1hcnkgYWRkcmVzcyBvciBudWxsIGlmIG5vdCBmb3VuZFxyXG4gICAqL1xyXG4gIGdldFVzZXJQcmltYXJ5QWRkcmVzcyh1c2VySWQ6IHN0cmluZyk6IE9ic2VydmFibGU8QWRkcmVzcyB8IG51bGw+IHtcclxuICAgIHJldHVybiBuZXcgT2JzZXJ2YWJsZShvYnNlcnZlciA9PiB7XHJcbiAgICAgIHRoaXMuZ2V0VXNlckFkZHJlc3NJbmZvKHVzZXJJZCkuc3Vic2NyaWJlKHtcclxuICAgICAgICBuZXh0OiAodXNlckFkZHJlc3NJbmZvKSA9PiB7XHJcbiAgICAgICAgICBvYnNlcnZlci5uZXh0KHVzZXJBZGRyZXNzSW5mby5wcmltYXJ5QWRkcmVzcyB8fCBudWxsKTtcclxuICAgICAgICAgIG9ic2VydmVyLmNvbXBsZXRlKCk7XHJcbiAgICAgICAgfSxcclxuICAgICAgICBlcnJvcjogKGVycm9yKSA9PiBvYnNlcnZlci5lcnJvcihlcnJvcilcclxuICAgICAgfSk7XHJcbiAgICB9KTtcclxuICB9XHJcbn1cclxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQUEsU0FBUyxpQkFBeUI7QUFDbEMsU0FBUyxvQkFBb0I7QUFHN0IsU0FBcUIsV0FBVzs7OztBRUpoQzs7OztTQUFTLGtCQUFrQjtBQUMzQixTQUFTLFlBQVksSUFBSSxhQUFhOztBQU1oQyxJQUFPLHFCQUFQLE1BQU8sb0JBQWtCOzs7Ozs7RUFPN0IsbUJBQW1CLFFBQWM7QUFFL0IsVUFBTSxnQkFBMkI7TUFDL0I7UUFDRSxJQUFJO1FBQ0osUUFBUTtRQUNSLE1BQU07UUFDTixPQUFPO1FBQ1AsU0FBUztRQUNULFNBQVM7UUFDVCxXQUFXOztNQUViO1FBQ0UsSUFBSTtRQUNKLFFBQVE7UUFDUixNQUFNO1FBQ04sT0FBTztRQUNQLFNBQVM7UUFDVCxTQUFTO1FBQ1QsV0FBVzs7O0FBSWYsVUFBTSxrQkFBbUM7TUFDdkM7TUFDQSxXQUFXO01BQ1gsZ0JBQWdCLGNBQWMsS0FBSyxhQUFXLFFBQVEsU0FBUzs7QUFJakUsV0FBTyxHQUFHLGVBQWUsRUFBRTtNQUN6QixNQUFNLEdBQUc7OztFQUViOzs7Ozs7RUFPQSxpQkFBaUIsUUFBYztBQUM3QixXQUFPLElBQUksV0FBVyxjQUFXO0FBQy9CLFdBQUssbUJBQW1CLE1BQU0sRUFBRSxVQUFVO1FBQ3hDLE1BQU0sQ0FBQyxvQkFBbUI7QUFDeEIsbUJBQVMsS0FBSyxnQkFBZ0IsU0FBUztBQUN2QyxtQkFBUyxTQUFRO1FBQ25CO1FBQ0EsT0FBTyxDQUFD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
