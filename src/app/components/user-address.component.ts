@@ -96,28 +96,28 @@ export class UserAddressComponent implements OnInit {
   determineAddressType(address: Address): 'residential' | 'commercial' | 'po-box' {
     const street = address.street.toLowerCase();
     
-    // Branch 1: PO Box detection (multiple patterns)
-    if (street.includes('po box') || street.includes('p.o. box') || 
-        street.includes('p o box') || street.includes('post office box')) {
+    // Branch 1: PO Box detection
+    if (this.isPoBoxAddress(street)) {
       return 'po-box';
     }
     
-    // Branch 2: Commercial indicators (multiple patterns)
-    if (street.includes('suite') || street.includes('ste') || 
-        street.includes('floor') || street.includes('building') || 
-        street.includes('office') || street.includes('plaza') ||
-        street.includes('center') || street.includes('mall')) {
+    // Branch 2: Commercial indicators
+    if (this.isCommercialAddress(street)) {
       return 'commercial';
     }
     
-    // Branch 3: Apartment/Unit indicators (still residential)
-    if (street.includes('apt') || street.includes('apartment') || 
-        street.includes('unit') || street.includes('#')) {
-      return 'residential';
-    }
-    
-    // Branch 4: Default case
+    // Branch 3: Default case (includes residential indicators)
     return 'residential';
+  }
+
+  private isPoBoxAddress(street: string): boolean {
+    return street.includes('po box') || street.includes('p.o. box') || 
+           street.includes('p o box') || street.includes('post office box');
+  }
+
+  private isCommercialAddress(street: string): boolean {
+    const commercialKeywords = ['suite', 'ste', 'floor', 'building', 'office', 'plaza', 'center', 'mall'];
+    return commercialKeywords.some(keyword => street.includes(keyword));
   }
 
   calculateDistanceFromWarehouse(address: Address): number {
@@ -160,42 +160,42 @@ export class UserAddressComponent implements OnInit {
       return false;
     }
     
-    // Branch 2: ZIP code validation
-    const zipRegex = /^\d{5}(-\d{4})?$/;
-    if (!zipRegex.test(address.zipCode)) {
+    // Branch 2: Basic field validation
+    if (!this.hasValidBasicFields(address)) {
       return false;
     }
     
-    // Branch 3: Street address validation
-    if (!address.street || address.street.trim().length < 5) {
-      return false;
-    }
-    
-    // Branch 4: City validation
-    if (!address.city || address.city.trim().length < 2) {
-      return false;
-    }
-    
-    // Branch 5: State validation
-    if (!address.state || address.state.trim().length < 2) {
-      return false;
-    }
-    
-    // Branch 6: International address validation
+    // Branch 3: International address validation
     if (address.country !== this.DOMESTIC_COUNTRY) {
-      // International addresses have different validation rules
-      if (address.country.trim().length < 2) {
-        return false;
-      }
-      
-      // Branch 6a: Restricted countries
-      const restrictedCountries = ['RESTRICTED_COUNTRY_1', 'RESTRICTED_COUNTRY_2'];
-      if (restrictedCountries.includes(address.country.toUpperCase())) {
-        return false;
-      }
+      return this.validateInternationalAddress(address);
     }
     
-    // Branch 7: All validations passed
+    // Branch 4: All validations passed
+    return true;
+  }
+
+  private hasValidBasicFields(address: Address): boolean {
+    const zipRegex = /^\d{5}(-\d{4})?$/;
+    
+    return zipRegex.test(address.zipCode) &&
+           !!address.street && address.street.trim().length >= 5 &&
+           !!address.city && address.city.trim().length >= 2 &&
+           !!address.state && address.state.trim().length >= 2;
+  }
+
+  private validateInternationalAddress(address: Address): boolean {
+    // Branch 1: Country name validation
+    if (address.country.trim().length < 2) {
+      return false;
+    }
+    
+    // Branch 2: Restricted countries check
+    const restrictedCountries = ['RESTRICTED_COUNTRY_1', 'RESTRICTED_COUNTRY_2'];
+    if (restrictedCountries.includes(address.country.toUpperCase())) {
+      return false;
+    }
+    
+    // Branch 3: International address is valid
     return true;
   }
 
@@ -214,39 +214,41 @@ export class UserAddressComponent implements OnInit {
       return undefined;
     }
     
-    // Branch 2: Filter valid addresses
+    // Branch 2: Get valid addresses
     const validAddresses = addresses.filter(addr => addr.isValidForShipping);
-    
-    // Branch 3: No valid addresses
     if (validAddresses.length === 0) {
       return undefined;
     }
     
-    // Branch 4: Single valid address
+    // Branch 3: Single valid address
     if (validAddresses.length === 1) {
       return validAddresses[0];
     }
     
-    // Branch 5: Multiple valid addresses - find best option
-    // Primary logic: prefer primary address
+    // Branch 4: Multiple addresses - find best option
+    return this.selectBestAddress(validAddresses);
+  }
+
+  private selectBestAddress(validAddresses: ProcessedAddress[]): ProcessedAddress {
+    // Branch 1: Prefer primary address
     const primaryAddress = validAddresses.find(addr => addr.isPrimary);
     if (primaryAddress) {
       return primaryAddress;
     }
     
-    // Branch 6: Prefer domestic addresses
+    // Branch 2: Prefer domestic addresses
     const domesticAddresses = validAddresses.filter(addr => !addr.isInternational);
     if (domesticAddresses.length > 0) {
       return domesticAddresses[0];
     }
     
-    // Branch 7: Prefer residential addresses
+    // Branch 3: Prefer residential addresses
     const residentialAddresses = validAddresses.filter(addr => addr.addressType === 'residential');
     if (residentialAddresses.length > 0) {
       return residentialAddresses[0];
     }
     
-    // Branch 8: Return first valid address
+    // Branch 4: Return first valid address
     return validAddresses[0];
   }
 
