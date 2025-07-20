@@ -1,0 +1,71 @@
+.order-processor {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.demo-section {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.order-result {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.order-details p {
+  margin: 0.5rem 0;
+}
+
+.status-approved {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.financial-summary {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.total {
+  font-size: 18px;
+  color: #28a745;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.rejection-reason {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8d7da;
+  border-radius: 4px;
+  color: #721c24;
+}

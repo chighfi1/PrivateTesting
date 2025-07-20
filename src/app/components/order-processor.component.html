@@ -1,0 +1,34 @@
+<div class="order-processor">
+  <h2>Order Processing System</h2>
+  
+  <div class="demo-section">
+    <button (click)="simulateOrderSubmission()" class="submit-btn">
+      Submit Sample Order
+    </button>
+  </div>
+
+  <div *ngIf="currentOrder" class="order-result">
+    <h3>Processing Result</h3>
+    
+    <div class="order-details">
+      <p><strong>Order ID:</strong> {{ currentOrder.orderId }}</p>
+      <p><strong>Customer:</strong> {{ currentOrder.customerId }}</p>
+      <p><strong>Status:</strong> 
+        <span [class]="currentOrder.status === 'approved' ? 'status-approved' : 'status-rejected'">
+          {{ currentOrder.status | uppercase }}
+        </span>
+      </p>
+      
+      <div *ngIf="currentOrder.status === 'approved'" class="financial-summary">
+        <p><strong>Subtotal:</strong> ${{ currentOrder.subtotal.toFixed(2) }}</p>
+        <p><strong>Tax:</strong> ${{ currentOrder.taxAmount.toFixed(2) }}</p>
+        <p><strong>Shipping:</strong> ${{ currentOrder.shippingCost.toFixed(2) }}</p>
+        <p class="total"><strong>Total:</strong> ${{ currentOrder.totalAmount.toFixed(2) }}</p>
+      </div>
+      
+      <div *ngIf="currentOrder.status === 'rejected'" class="rejection-reason">
+        <p><strong>Reason:</strong> {{ currentOrder.rejectionReason }}</p>
+      </div>
+    </div>
+  </div>
+</div>

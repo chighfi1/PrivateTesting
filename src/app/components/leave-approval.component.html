@@ -1,0 +1,18 @@
+<div class="leave-container">
+  <h2>Leave Approval System</h2>
+  
+  <button (click)="simulateLeaveRequest()" class="request-btn">
+    Submit Leave Request
+  </button>
+
+  <div *ngIf="currentLeave" class="result">
+    <h3>{{ currentLeave.employeeName }}'s Request</h3>
+    <p><strong>Status:</strong> 
+      <span [class]="currentLeave.status === 'approved' ? 'approved' : 'rejected'">
+        {{ currentLeave.status | uppercase }}
+      </span>
+    </p>
+    <p><strong>Days:</strong> {{ currentLeave.daysRequested }}</p>
+    <p *ngIf="currentLeave.rejectionReason"><strong>Reason:</strong> {{ currentLeave.rejectionReason }}</p>
+  </div>
+</div>

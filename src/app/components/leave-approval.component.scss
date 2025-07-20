@@ -1,0 +1,30 @@
+.leave-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.request-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.approved {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.rejected {
+  color: #dc3545;
+  font-weight: bold;
+}
