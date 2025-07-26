@@ -1,0 +1,18 @@
+<form [formGroup]="userForm" (ngSubmit)="submitProfile()">
+  <label>
+    Name:
+    <input formControlName="name" />
+  </label>
+  <label>
+    Email:
+    <input formControlName="email" />
+  </label>
+  <label>
+    Country:
+    <select formControlName="country">
+      <option *ngFor="let country of (processedCountries$ | async)" [value]="country">{{ country }}</option>
+    </select>
+  </label>
+  <button type="submit">Update Profile</button>
+</form>
+<div *ngIf="submitMessage">{{ submitMessage }}</div>

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { UserProfileComponent } from './components/user-profile.component';
 
 export const routes: Routes = [
   {
@@ -17,5 +18,6 @@ export const routes: Routes = [
   {
     path: 'leave',
     loadComponent: () => import('./components/leave-approval.component').then(m => m.LeaveApprovalComponent)
-  }
+  },
+  { path: 'profile', component: UserProfileComponent },
 ];

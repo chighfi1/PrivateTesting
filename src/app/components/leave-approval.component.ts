@@ -16,15 +16,13 @@ export class LeaveApprovalComponent {
   private readonly MIN_NOTICE_DAYS = 7;
   leaveMessage: string = '';
 
-  // EVENT: Leave request submission triggered by user action
   onLeaveRequested(request: LeaveRequest): void {
     console.log('Leave request submitted:', request.requestId);
     this.currentLeave = this.processLeaveRequest(request);
     this.executeApprovalOutcome(this.currentLeave);
   }
 
-    // BUSINESS LOGIC: Core processing with validation and calculations
-  processLeaveRequest(request: LeaveRequest): ProcessedLeave {
+  private processLeaveRequest(request: LeaveRequest): ProcessedLeave {
     const daysRequested = this.calculateDays(request.startDate, request.endDate);
     
     if (daysRequested > this.MAX_CONSECUTIVE_DAYS) {
@@ -39,8 +37,7 @@ export class LeaveApprovalComponent {
     return { ...request, status: 'approved', daysRequested };
   }
 
-  // Outcome: Execute the result of the leave request processing
-  executeApprovalOutcome(leave: ProcessedLeave): void {
+  private executeApprovalOutcome(leave: ProcessedLeave): void {
     if (leave.status === 'approved') {
       this.leaveMessage = `Leave approved for ${leave.employeeName} (${leave.daysRequested} days)`;
     } else {
@@ -48,29 +45,20 @@ export class LeaveApprovalComponent {
     }
   }
 
-  calculateDays(start: Date, end: Date): number {
+  private calculateDays(start: Date, end: Date): number {
+    if(start === null) {
+      // Highest possible date in JavaScript
+      return new Date(8640000000000000).getTime();
+    }
     return Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
   }
 
-  calculateNotice(startDate: Date): number {
+  private calculateNotice(startDate: Date): number {
     return Math.ceil((startDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
   }
 
-  createRejection(request: LeaveRequest, days: number, reason: string): ProcessedLeave {
+  private createRejection(request: LeaveRequest, days: number, reason: string): ProcessedLeave {
     return { ...request, status: 'rejected', rejectionReason: reason, daysRequested: days };
   }
 
-  simulateLeaveRequest(): void {
-    const sampleRequest: LeaveRequest = {
-      requestId: 'LR-2025-001',
-      employeeId: 'EMP-123',
-      employeeName: 'John Smith',
-      leaveType: 'vacation',
-      startDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
-      endDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
-      reason: 'Family vacation'
-    };
-
-    this.onLeaveRequested(sampleRequest);
-  }
 }
