@@ -11,7 +11,7 @@ import { Observable, map } from 'rxjs';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.scss'
+  styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent {
   userForm: FormGroup;
