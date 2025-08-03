@@ -20,4 +20,9 @@ export const routes: Routes = [
     loadComponent: () => import('./components/leave-approval.component').then(m => m.LeaveApprovalComponent)
   },
   { path: 'profile', component: UserProfileComponent },
+  {
+    path: 'dynamic-form',
+    loadComponent: () =>
+      import('./components/dynamic-form.component').then(m => m.DynamicFormComponent)
+  }
 ];
