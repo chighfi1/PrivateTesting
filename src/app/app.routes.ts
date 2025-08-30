@@ -24,5 +24,10 @@ export const routes: Routes = [
     path: 'dynamic-form',
     loadComponent: () =>
       import('./components/dynamic-form.component').then(m => m.DynamicFormComponent)
+  },
+  {
+    path: 'product-details',
+    loadComponent: () =>
+      import('./components/product-details/product-details.component').then(m => m.ProductDetailsComponent)
   }
 ];
