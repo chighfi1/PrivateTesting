@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { SubmitService } from '../services/submit.service';
-import { take } from 'rxjs';
+import { take, firstValueFrom, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -11,45 +10,63 @@ import { take } from 'rxjs';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  form: FormGroup;
+  fieldA: string = ''; // Component-scoped property for fieldA
+  fieldB: string = ''; // Component-scoped property for fieldB
   submitMessage = '';
+  config: { enforceTheNoNoRule: boolean } = { enforceTheNoNoRule: false }; // Default config
+
+
+  formatValidation = false;
+  _isNoNoRuleBroken = false;
 
   constructor(
-    private fb: FormBuilder,
     private dataService: DataService,
     private submitService: SubmitService
-  ) {
-    this.form = this.fb.group({
-      fieldA: [''], // Renamed back to fieldA
-      fieldB: ['']
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
-    // Populate the form with data from the data service
-    this.dataService.getFormData().pipe(take(1)).subscribe(data => {
-      this.form.patchValue(data);
-    });
-
-    // Load validation configuration
-    this.dataService.getValidationConfig().pipe(take(1)).subscribe(config => {
-      this.isRestrictedKeywordEnabled = config.disallowTestInFieldB;
-    });
+    this.dataService.getFieldData()
+      .pipe(
+        take(1),
+        switchMap(data => {
+          this.fieldA = data.fieldA;
+          this.fieldB = data.fieldB;
+          return this.dataService.getValidationConfig().pipe(take(1));
+        })
+      )
+      .subscribe(config => {
+        this.config = config;
+      });
   }
 
-  private isRestrictedKeywordEnabled = false;
+  private isNoNoRuleBroken(): boolean {
+    return this.config.enforceTheNoNoRule && this.fieldB.includes('test');    
+  }
 
-  private computePayload(): { fieldA: string; fieldB: string; isFlagged?: boolean } {
-    const fieldB = this.form.get('fieldB')?.value || '';
-    return {
-      ...this.form.value,
-      ...(this.isRestrictedKeywordEnabled && fieldB.includes('test') ? { isFlagged: true } : {})
-    };
+  private concatenateFieldsForPayload(): string {
+    if(this.fieldA.length > 20 || this.fieldB.length > 20) {
+      this.submitMessage = 'Payload is too long.';
+      this.formatValidation = false;
+      return '';
+    }
+    let payload = `${this.fieldA} + ${this.fieldB}`;
+    return payload;
+  }
+
+  private runConfigLogic(): void {
+    this._isNoNoRuleBroken = this.isNoNoRuleBroken();
   }
 
   submit(): void {
-    const payload = this.computePayload();
+    const payload = this.concatenateFieldsForPayload();
 
+    this.runConfigLogic();
+
+    if(this.formatValidation === false || this._isNoNoRuleBroken) {
+      this.submitMessage = 'Validation failed: this is invalid.';
+      return;
+    }
+    
     this.submitService.submitFormData(payload).pipe(take(1)).subscribe({
       next: () => {
         this.submitMessage = 'Form submitted successfully!';
